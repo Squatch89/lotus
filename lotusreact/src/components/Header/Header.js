@@ -10,7 +10,7 @@ const Header = () => {
 
             <Link className="navbar-brand" to="/">
                 <img src={logo} alt="lotus logo" className="littlelogo"/>
-                Lotus Tracker
+                <div className="brand-name">Lotus Tracker</div>
             </Link>
             <div className="navbar-nav">
                 <ul className="navbar-group">

@@ -1,10 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Meditation.css';
 
 // creates Meditation component to render to the page
 const Meditation = () => {
     return (
-        <div>Meditation</div>
+        <div className="jumbotron text-center">
+            <h1>Meditation</h1>
+            <hr className="hr"/>
+            <p>Relax your mind through meditation</p>
+            <p className="lead">
+                <Link className="btn btn-primary btn-lg" to="/">Home</Link>
+            </p>
+        </div>
     )
 };
 
