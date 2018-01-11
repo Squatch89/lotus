@@ -1,5 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const jwt = require('express-jwt');
+const jwks = require('jwks-rsa');
+const cors = require('cors');
 const path = require('path');
 const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
@@ -16,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors());
 
 
 //commented out until mongo is set up to reduce terminal tabs required to run project in development
