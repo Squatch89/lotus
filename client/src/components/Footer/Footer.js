@@ -5,7 +5,9 @@ import logo from "../Images/logo.png";
 // creates Footer component to render to the page
 const Footer = () => {
     return (
-        <footer>Footer</footer>
+        <footer className="footer">
+            Footer
+        </footer>
     )
 };
 
