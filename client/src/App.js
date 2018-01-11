@@ -10,6 +10,14 @@ import './App.css';
 
 
 class App extends Component {
+    
+    // state = {users: []};
+    //
+    // componentDidMount() {
+    //     fetch('/home')
+    //         .then(res => res.json())
+    //         .then(users => this.setState({ users }));
+    // }
     render() {
         return (
             <div>
@@ -30,7 +38,20 @@ class App extends Component {
                 {["/user", "/trends", "/meditation"].map(path =>
                     <Route path={path} component={Footer} />
                 )}
+    
+                
+                
+                {/*<div className="App">*/}
+                {/*<h1>Users</h1>*/}
+                {/*{this.state.users.map(user =>*/}
+                    {/*<div key={user.id}>{user.username}</div>*/}
+                {/*)}*/}
+                {/*</div>*/}
+               
+            
             </div>
+            
+            
         );
     }
 }

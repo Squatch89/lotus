@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Trends.css';
-
 // creates Trends component to render to the page
 const Trends = () => {
     return (
@@ -15,6 +14,5 @@ const Trends = () => {
         </div>
     )
 };
-
 // exports Trends for external use
 export default Trends;

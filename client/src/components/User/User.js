@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './User.css';
-
 // creates User component to render to the page
 const User = () => {
     return (
@@ -15,6 +14,5 @@ const User = () => {
         </div>
     )
 };
-
 // exports User for external use
 export default User;

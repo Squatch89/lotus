@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Meditation.css';
-
 // creates Meditation component to render to the page
 const Meditation = () => {
     return (
@@ -15,6 +14,5 @@ const Meditation = () => {
         </div>
     )
 };
-
 // exports Meditation for external use
 export default Meditation;
