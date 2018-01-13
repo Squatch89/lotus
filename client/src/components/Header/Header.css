@@ -1,40 +1,41 @@
-
 .navbar {
-    display: block;
+    grid-column-start: col1;
+    grid-column-end: col4;
+    grid-row-start: row1;
+    grid-row-end: row1;
     background-color: rgba(50, 100, 200, 0.25);
-    height: 75px;
-    width: 100%;
+    /*height: 75px;*/
+    /*width: 100%;*/
 }
-
 .littlelogo {
     max-width: 50px;
     padding: 20px 10px 10px 5px;
     float: left;
 }
-
 .navbar-brand {
+    grid-column-start: col1;
+    grid-column-end: col1;
+    grid-row-start: row1;
+    grid-row-end: row1;
     color: white;
     text-decoration: none;
-    padding-top: 20px;
+    /*padding-top: 20px;*/
 }
-
 .brand-name {
     float: left;
     margin-top: 25px;
     padding: 5px;
 }
-
 .navbar-group {
     list-style-type: none;
-    margin: 0;
-    padding: 0;
+    grid-column-start: col3;
+    grid-column-end: col4;
+    /*margin-left: 70%;*/
 }
-
 .navbar-item {
     padding: 30px 5px 5px 0;
     float: right;
 }
-
 .navbar-link {
     color: white;
     text-decoration: none;
@@ -43,11 +44,9 @@
     padding: 10px;
     border-radius: 2px;
 }
-
 .navbar-item:hover .navbar-link {
     background-color: rgba(255, 255, 255, 0.5);
 }
-
 .navbar-brand:hover .brand-name {
     background-color: rgba(255, 255, 255, 0.5);
 }

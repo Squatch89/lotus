@@ -1,11 +1,9 @@
 .footer {
-    height: 30px;
-    display: block;
+    grid-column-start: col1;
+    grid-column-end: col4;
+    grid-row-start: row3;
+    grid-row-end: row4;
     background-color: rgba(50, 100, 200, 0.25);
-    width: 100%;
     text-align: center;
     color: white;
-    position: absolute;
-    bottom: 0;
-    padding: 10px 0 0 0;
 }

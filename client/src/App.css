@@ -1,12 +1,21 @@
+.wrapper {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: [col1] 1fr [col2] 4fr [col3] 1fr [col4];
+    grid-template-rows: [row1] 1fr [row2] 12fr [row3] 1fr [row4];
+}
+
 .container{
-    height: 100%;
+    grid-column-start: col2;
+    grid-column-end: col2;
+    grid-row-start: row2;
+    grid-row-end: row2;
     padding: 0;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 .text-center {
     text-align: center;
 }
