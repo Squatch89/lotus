@@ -21,10 +21,10 @@ const Header = () => {
                         <Link className="navbar-link" to="/user">User</Link>
                     </li>
                     <li className="navbar-item">
-                        <Link className="navbar-link" to="/trends">Trends</Link>
+                        <Link className="navbar-link" to="/user/trends">Trends</Link>
                     </li>
                     <li className="navbar-item">
-                        <Link className="navbar-link" to="/meditation">Meditation</Link>
+                        <Link className="navbar-link" to="/user/meditation">Meditation</Link>
                     </li>
                 </ul>
             </div>

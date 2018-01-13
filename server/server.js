@@ -21,6 +21,25 @@ app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 
+const authCheck = jwt({
+    secret: jwks.expressJwtSecret({
+        cache: true,
+        rateLimit: true,
+        jwksRequestsPerMinute: 5,
+        // YOUR-AUTH0-DOMAIN name e.g prosper.auth0.com
+        jwksUri: "https://{YOUR-AUTH0-DOMAIN}/.well-known/jwks.json"
+    }),
+    // This is the identifier we set when we created the API
+    audience: '{YOUR-API-AUDIENCE-ATTRIBUTE}',
+    issuer: '{YOUR-AUTH0-DOMAIN}',
+    algorithms: ['RS256']
+});
+
+
+
+
+
+
 
 //commented out until mongo is set up to reduce terminal tabs required to run project in development
 // mongoose.Promise = Promise;
@@ -36,7 +55,6 @@ app.use(cors());
 
 app.use('/', htmlRoutes);
 app.use('/api', apiRoutes);
-
 
 app.listen(PORT, function() {
     console.log("App listening on PORT: " + PORT);

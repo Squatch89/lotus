@@ -24,19 +24,19 @@ class App extends Component {
             <div>
                 {/*Header rendered only on certain routes*/}
 
-                {["/user", "/trends", "/meditation"].map(path =>
+                {["/user", "/user/trends", "/user/meditation"].map(path =>
                     <Route path={path} component={Header} />
                 )}
 
                 <div className="container">
                     <Route path="/" exact component={Jumbotron} />
-                    <Route path="/user" component={User} />
-                    <Route path="/trends" component={Trends} />
-                    <Route path="/meditation" component={Meditation} />
+                    <Route path="/user" exact component={User} />
+                    <Route path="/user/trends" component={Trends} />
+                    <Route path="/user/meditation" component={Meditation} />
                 </div>
 
                 {/*Footer rendered only on certain routes*/}
-                {["/user", "/trends", "/meditation"].map(path =>
+                {["/user", "/user/trends", "/user/meditation"].map(path =>
                     <Route path={path} component={Footer} />
                 )}
     

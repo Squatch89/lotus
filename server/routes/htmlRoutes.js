@@ -7,9 +7,6 @@ htmlRouter.get("/home", function(req, res) {
     res.json([{
         id: 1,
         username: "Gene"
-    }, {
-        id: 2,
-        username: "Julie"
     }]);
 });
 
