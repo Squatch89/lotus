@@ -28,12 +28,11 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    margin-left: 70%;
 }
 
 .navbar-item {
     padding: 30px 5px 5px 0;
-    float: left;
+    float: right;
 }
 
 .navbar-link {

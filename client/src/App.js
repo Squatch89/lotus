@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
 import Jumbotron from './components/Jumbotron/Jumbotron.js';
 import User from './components/User/User.js';
+import Signin from './components/Signin/Signin.js';
+import Signup from './components/Signup/Signup.js';
 import Trends from './components/Trends/Trends.js';
 import Meditation from './components/Meditation/Meditation.js';
 import Header from './components/Header/Header.js';
@@ -22,6 +24,8 @@ class App extends Component {
                 <div className="container">
                     <Route path="/" exact component={Jumbotron} />
                     <Route path="/user" component={User} />
+                    <Route path="/signin" component={Signin} />
+                    <Route path="/signup" component={Signup} />
                     <Route path="/trends" component={Trends} />
                     <Route path="/meditation" component={Meditation} />
                 </div>
