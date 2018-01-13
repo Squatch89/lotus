@@ -20,7 +20,7 @@ class App extends Component {
     // }
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 {/*Header rendered only on certain routes*/}
 
                 {["/user", "/trends", "/meditation"].map(path =>
