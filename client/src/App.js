@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer.js';
 import './App.css';
 
 
+
 class App extends Component {
     
     // state = {users: []};
@@ -18,40 +19,48 @@ class App extends Component {
     //         .then(res => res.json())
     //         .then(users => this.setState({ users }));
     // }
+    
+    
+    
+    
+    playAudio = id => {
+        console.log(this.state.audio);
+    };
+    
+    
     render() {
         return (
             <div className="wrapper">
                 {/*Header rendered only on certain routes*/}
-
-                {["/user", "/trends", "/meditation"].map(path =>
-                    <Route path={path} component={Header} />
+                
+                {["/user", "/trends", "/meditation"].map((path, index) =>
+                    <Route key={index} path={path} component={Header}/>
                 )}
-
+                
                 <div className="container">
-                    <Route path="/" exact component={Jumbotron} />
-                    <Route path="/user" component={User} />
-                    <Route path="/trends" component={Trends} />
-                    <Route path="/meditation" component={Meditation} />
+                    <Route path="/" exact component={Jumbotron}/>
+                    <Route path="/user" component={User}/>
+                    <Route path="/trends" component={Trends}/>
+                    <Route path="/meditation" render={(props) => <Meditation {...props}/>}/>
                 </div>
-
+                
                 {/*Footer rendered only on certain routes*/}
-                {["/user", "/trends", "/meditation"].map(path =>
-                    <Route path={path} component={Footer} />
+                {["/user", "/trends", "/meditation"].map((path, index) =>
+                    <Route key={index} path={path} component={Footer}/>
                 )}
-    
                 
                 
                 {/*<div className="App">*/}
                 {/*<h1>Users</h1>*/}
                 {/*{this.state.users.map(user =>*/}
-                    {/*<div key={user.id}>{user.username}</div>*/}
+                {/*<div key={user.id}>{user.username}</div>*/}
                 {/*)}*/}
                 {/*</div>*/}
-               
+            
             
             </div>
-            
-            
+        
+        
         );
     }
 }
