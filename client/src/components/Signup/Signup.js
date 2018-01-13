@@ -1,20 +1,62 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Signup.css';
+import React, {Component} from 'react';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
 
-// creates Signup component to render to the page
-const Signup = () => {
-    return (
-        <div className="jumbotron text-center">
-            <h1>Sign Up</h1>
-            <hr className="hr"/>
-            <p>Create a new user account to track your mental health.</p>
-            <p className="lead">
-                <Link className="btn btn-primary btn-lg" to="/">Home</Link>
-            </p>
-        </div>
-    )
-};
 
-// exports Signup for external use
+class Signup extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {};
+    }
+
+    getValues = (event) => {
+        this.setState({[event.target.name]: event.target.value});
+    };
+
+
+    sendData = (event) => {
+        event.preventDefault();
+
+        axios.post('/signup', this.state)
+            .then((data) => {
+                console.log(data);
+                localStorage.setItem('isAuthenticated', JSON.stringify(true));
+                this.props.history.push('/user');
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    render() {
+
+        return (
+            <div>
+
+                <form>
+                    <input
+                        type="text"
+                        name="username"
+                        onChange={this.getValues}/> <br/>
+
+
+                    <input
+                        type="password"
+                        name="password"
+                        onChange={this.getValues}/> <br/>
+
+                    <button onClick={this.sendData}>Sign Up</button>
+                </form>
+
+
+                <Link to = '/signin'> <button>Go to Signin</button> </Link>
+
+            </div>
+        );
+    }
+
+}
+
 export default Signup;

@@ -1,3 +1,4 @@
 module.exports = {
-    Trends: require("./trends")
+    Trends: require("./trends"),
+    User: require("./user")
 };

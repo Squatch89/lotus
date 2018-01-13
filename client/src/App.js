@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Route} from 'react-router-dom';
+import axios from 'axios';
 import Jumbotron from './components/Jumbotron/Jumbotron.js';
 import User from './components/User/User.js';
 import Signin from './components/Signin/Signin.js';
@@ -20,6 +21,13 @@ class App extends Component {
     //         .then(res => res.json())
     //         .then(users => this.setState({ users }));
     // }
+    constructor() {
+        super();
+        this.state = {
+            authenticated: false
+        }
+    }
+
     render() {
         return (
             <div className="wrapper">
