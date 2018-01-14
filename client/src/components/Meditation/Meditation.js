@@ -30,36 +30,37 @@ class Meditation extends Component {
             case "Day Time Forest":
                 console.log("You Selected day time forest");
                 console.log(audioName[id]);
-                this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                this.setState({chosenAudio: audioName[id]});
                 console.log(this.state.chosenAudio);
                 break;
             case "Night Time Forest":
                 console.log("You Selected night time forest");
                 console.log(audioName[id]);
-                this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                this.setState({chosenAudio: audioName[id]});
                 console.log(this.state.chosenAudio);
                 break;
             case "Ocean Waves":
                 console.log("You Selected ocean waves");
                 console.log(audioName[id]);
-                this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                this.setState({chosenAudio: audioName[id]});
                 console.log(this.state.chosenAudio);
                 break;
             case "White Noise":
                 console.log("You Selected white noise");
                 console.log(audioName[id]);
-                this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                this.setState({chosenAudio: audioName[id]});
                 console.log(this.state.chosenAudio);
                 break;
             case "Pink Noise":
                 console.log("You Selected pink noise");
                 console.log(audioName[id]);
-                this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                this.setState({chosenAudio: audioName[id]});
                 console.log(this.state.chosenAudio);
                 break;
             default:
                 console.log("oops! not set up yet");
         }
+        this.setState({meditationSelected: true});
     };
     
     render() {
