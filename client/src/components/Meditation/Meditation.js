@@ -17,7 +17,7 @@ class Meditation extends Component {
         meditationSelected: false,
         audio: ["Day Time Forest", "Night Time Forest", "Ocean Waves", "White Noise", "Pink Noise"],
         audioFiles: [ForestOne, ForestTwo, OceanWaves, WhiteNoise, PinkNoise],
-        chosenAudio: []
+        chosenAudio: ""
     };
     
     chooseAudio = (id, fileName) => {
@@ -29,33 +29,38 @@ class Meditation extends Component {
         switch (fileName) {
             case "Day Time Forest":
                 console.log("You Selected day time forest");
+                console.log(audioName[id]);
                 this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                console.log(this.state.chosenAudio);
                 break;
             case "Night Time Forest":
                 console.log("You Selected night time forest");
+                console.log(audioName[id]);
                 this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                console.log(this.state.chosenAudio);
                 break;
             case "Ocean Waves":
                 console.log("You Selected ocean waves");
+                console.log(audioName[id]);
                 this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                console.log(this.state.chosenAudio);
                 break;
             case "White Noise":
                 console.log("You Selected white noise");
+                console.log(audioName[id]);
                 this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                console.log(this.state.chosenAudio);
                 break;
             case "Pink Noise":
                 console.log("You Selected pink noise");
+                console.log(audioName[id]);
                 this.setState({chosenAudio: audioName[id], meditationSelected: true});
+                console.log(this.state.chosenAudio);
                 break;
             default:
                 console.log("oops! not set up yet");
         }
-        console.log(this.state.chosenAudio);
     };
-    
-    handleChange = () => {
-        this.setState()
-    }
     
     render() {
         if (!this.state.meditationSelected) {
