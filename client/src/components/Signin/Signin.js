@@ -18,7 +18,7 @@ class Signin extends Component {
     sendData = (event) => {
         event.preventDefault();
 
-        axios.post('/signin', this.state)
+        axios.post('/api/signin', this.state)
             .then((data) => {
                 localStorage.setItem('isAuthenticated', JSON.stringify(true));
                 this.props.history.push('/user');
@@ -33,7 +33,7 @@ class Signin extends Component {
     render() {
 
         return (
-            <div>
+            <div className="jumbotron text-center">
 
                 <form>
                     <input
