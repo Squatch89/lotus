@@ -4,7 +4,7 @@ import './Button.css';
 const Button = props => {
     return (
         [
-            <button onClick={() => props.chooseAudio(props.id, props.audioName)} id={props.id}>{props.audioName}</button>
+            <button onClick={() => props.clickHandler(props.id, props.name)} id={props.id}>{props.name}</button>
         ]
     )
 };

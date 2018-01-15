@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../Button/Button.js';
-import Audio from "../Audio/Audio.js";
+// import Audio from "../Audio/Audio.js";
 import './Meditation.css';
 import ForestOne from './Audio/Forest-1.wav';
 import ForestTwo from './Audio/Forest-2.wav';
@@ -10,29 +10,61 @@ import WhiteNoise from './Audio/White-Noise.wav';
 import PinkNoise from './Audio/Pink-Noise.wav';
 // creates Meditation component to render to the page
 class Meditation extends Component {
+    
     constructor() {
         super();
         this.state = {
-            meditationType: ["Breath", "Audio"],
+            meditationChoices: ["Breath", "Audio"],
+            meditationType: '',
             meditationSelected: false,
             audio: ["Day Time Forest", "Night Time Forest", "Ocean Waves", "White Noise", "Pink Noise"],
             audioFiles: [ForestOne, ForestTwo, OceanWaves, WhiteNoise, PinkNoise],
             chosenAudio:''
         };
     }
-    chooseAudio = (id, fileName) => {
+    
+    chooseMedType = (id, name) => {
+        console.log("ID: ", id);
+        const medType = this.state.meditationChoices[id];
+        console.log("MedType: ", medType);
+        this.setState({meditationType: medType, meditationSelected: true});
+    };
+    
+    chooseAudio = (id, filename) => {
+        
         console.log("ID: ", id);
         const audioName = this.state.audioFiles;
         console.log("Audio Path: ", audioName[id]);
         this.setState({ chosenAudio: audioName[id], meditationSelected: true });
     };
+    
+    
+    clickHandler = (id, name) => {
+        console.log("ID: ", id);
+        console.log("Name: ", name);
+        
+        if (!this.state.meditationSelected) {
+            this.chooseMedType(id, name);
+        }
+        
+        else if (this.state.meditationSelected && this.state.meditationType === "Audio") {
+            this.chooseAudio(id, name);
+        }
+        
+        else {
+            console.log("hmmm that didn't work");
+        }
+    };
+
     componentDidUpdate() {
-        this.refs.audio.load();
+        if(this.state.meditationType === "Audio"){
+            this.refs.audio.load();
+        }
     }
     render() {
         return (
             <div>
-                    <PresentAudio {...this.state} chooseAudio={this.chooseAudio} />
+                <PresentAudio {...this.state} clickHandler={this.clickHandler} />
                 {this.state.meditationSelected ? <audio controls ref="audio">
                     <source src={this.state.chosenAudio} type="audio/wav" />
                     not supported
@@ -41,29 +73,52 @@ class Meditation extends Component {
         )
     }
 }
+
+//tenerary operator to switch between medtype buttons and then the screens
+
 const PresentAudio = (props) => {
-    return (
-        <div>
-            <div className="jumbotron text-center">
-                <h1>Meditation</h1>
-                <hr className="hr" />
-                <p>Relax your mind through meditation</p>
-                <p className="lead">
-                    <Link className="btn btn-primary btn-lg" to="/">Home</Link>
-                </p>
+    if (!props.meditationSelected)
+    {
+        return (
+            <div>
+                {
+                    props.meditationChoices.map((med, index) => (
+                        <Button
+                            key={med}
+                            id={index}
+                            clickHandler={props.clickHandler}
+                            name={med}
+                        />
+                    ))
+                }
             </div>
-            {
-                props.audio.map((audio, index) => (
-                    <Button
-                        key={index}
-                        id={index}
-                        chooseAudio={props.chooseAudio}
-                        audioName={audio}
-                    />
-                ))
-            }
-        </div>
-    )
+        )
+    }
+    else if (props.meditationSelected && props.meditationType === "Audio") {
+        return (
+            <div>
+                <div className="jumbotron text-center">
+                    <h1>Meditation</h1>
+                    <hr className="hr"/>
+                    <p>Relax your mind through meditation</p>
+                    <p className="lead">
+                        <Link className="btn btn-primary btn-lg" to="/">Home</Link>
+                    </p>
+                </div>
+                {
+                    props.audio.map((audio, index) => (
+                        <Button
+                            key={audio}
+                            id={index}
+                            clickHandler={props.clickHandler}
+                            name={audio}
+                        />
+                    ))
+                }
+            </div>
+        )
+    }
 };
+
 // exports Meditation for external use
 export default Meditation;

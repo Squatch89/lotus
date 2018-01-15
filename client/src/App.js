@@ -20,14 +20,6 @@ class App extends Component {
     //         .then(users => this.setState({ users }));
     // }
     
-    
-    
-    
-    playAudio = id => {
-        console.log(this.state.audio);
-    };
-    
-    
     render() {
         return (
             <div className="wrapper">
