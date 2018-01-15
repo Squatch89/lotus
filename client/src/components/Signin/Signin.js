@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Link, withRouter} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 
 class Signin extends Component {
@@ -20,8 +20,10 @@ class Signin extends Component {
 
         axios.post('/api/signin', this.state)
             .then((data) => {
+            console.log(this);
                 localStorage.setItem('isAuthenticated', JSON.stringify(true));
-                this.props.history.push('/user');
+                this.router.props.authenticateUser();
+                this.props.history.push('/meditation');
             })
             .catch((err) => {
                 // Not signed
