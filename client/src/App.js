@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Route} from 'react-router-dom';
-import axios from 'axios';
+import {Route, Redirect} from 'react-router-dom';
 import Jumbotron from './components/Jumbotron/Jumbotron.js';
 import User from './components/User/User.js';
 import Signin from './components/Signin/Signin.js';

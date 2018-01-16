@@ -22,7 +22,7 @@ class Signin extends Component {
             .then((data) => {
             console.log(this);
                 localStorage.setItem('isAuthenticated', JSON.stringify(true));
-                this.router.props.authenticateUser();
+                this.props.authenticateUser();
                 this.props.history.push('/meditation');
             })
             .catch((err) => {
