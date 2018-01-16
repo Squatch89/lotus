@@ -7,7 +7,9 @@ import './Trends.css';
 class Trends extends Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            timeFrame:["Week", "Month"]
+        };
     }
     
     render() {
@@ -24,8 +26,8 @@ class Trends extends Component {
                 
                 <Chart
                     chartType="PieChart"
-                    data={[["Task", "Hours per Day"], ["Work", 11], ["Eat", 2], ["Commute", 2], ["Watch TV", 2], ["Sleep", 7]]}
-                    options={{"title": "My Daily Activities",  "backgroundColor": "transparent"}}
+                    data={[["Task", "Hours per Day"], ["Good", 4], ["Neutral", 2], ["Bad", 1]]}
+                    options={{"title": "How My Week Has Gone",  "backgroundColor": "transparent"}}
                     graph_id="PieChart"
                     width="100%"
                     height="400px"
