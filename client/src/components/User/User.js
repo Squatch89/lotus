@@ -75,7 +75,7 @@ class User extends Component {
 const MedOrTrend = (props) => {
     if (props.checkedIn) {
         return (
-            <div>
+            <div className="container">
                 <Link to="/trends">
                     <button className="btn btn-primary btn-lg">Check Your Trends</button>
                 </Link>

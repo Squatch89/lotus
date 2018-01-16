@@ -2,11 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Jumbotron.css';
 import logo from "../Images/logo.png";
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 // creates Jumbotron component to render to the  landing page
 const Jumbotron = () => {
     return (
 
+        <div className="wrapper">
         <div className="container">
         <div className="jumbotron text-center">
             <img src={logo} alt="lotus logo" id="biglogo"/>
@@ -16,6 +19,7 @@ const Jumbotron = () => {
             <p className="lead">
                 <Link className="btn btn-primary btn-lg" to="/signin">Sign In</Link>
             </p>
+        </div>
         </div>
         </div>
     )
