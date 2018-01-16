@@ -62,15 +62,23 @@ class Meditation extends Component {
         }
     }
     render() {
-        return (
-            <div>
-                <PresentAudio {...this.state} clickHandler={this.clickHandler} />
-                {this.state.meditationSelected ? <audio controls ref="audio">
-                    <source src={this.state.chosenAudio} type="audio/wav" />
-                    not supported
-                </audio> : ''}
-            </div>
-        )
+        if (this.state.meditationType === "Audio") {
+            return (
+                <div>
+                    <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
+                    {this.state.meditationSelected ? <audio controls ref="audio">
+                        <source src={this.state.chosenAudio} type="audio/wav"/>
+                        not supported
+                    </audio> : ''}
+                </div>
+            )
+        }
+        else {
+    
+            return (
+                <BreathCircle {...this.state} clickHandler={this.clickHandler}/>
+            )
+        }
     }
 }
 
@@ -116,6 +124,31 @@ const PresentAudio = (props) => {
                     ))
                 }
             </div>
+        )
+    }
+};
+
+const BreathCircle = (props) => {
+    if (!props.meditationSelected)
+    {
+        return (
+            <div>
+                {
+                    props.meditationChoices.map((med, index) => (
+                        <Button
+                            key={med}
+                            id={index}
+                            clickHandler={props.clickHandler}
+                            name={med}
+                        />
+                    ))
+                }
+            </div>
+        )
+    }
+    else if (props.meditationSelected && props.meditationType === "Breath") {
+        return (
+            <div className="circle"></div>
         )
     }
 };
