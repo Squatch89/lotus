@@ -1,0 +1,48 @@
+html {
+    height: 100%;
+}
+
+/*body {*/
+    /*background: linear-gradient(to bottom right, rgba(0,255,150,0.5), rgba(50,100,200,0.5));*/
+/*}*/
+
+.reset {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.jumbotron {
+    width: 100%;
+    background-color: rgba(50,100,200,0.25);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.hr {
+    width: 75%;
+    border: solid rgba(255,255,255,0.5);
+}
+
+.btn {
+    padding: 10px;
+    color: white;
+    border-radius: 10%;
+    text-decoration: none;
+    margin: 2px;
+}
+
+.btn-primary {
+    background-color: rgba(0,255,150,0.5);
+    border: none;
+}
+
+.btn:hover {
+    background-color: rgba(0,200,150,0.5);
+}
+
+#biglogo {
+    max-width: 500px;
+}

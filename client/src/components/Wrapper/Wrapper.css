@@ -1,0 +1,7 @@
+.wrapper {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: [col1] 1fr [col2] 4fr [col3] 1fr [col4];
+    grid-template-rows: [row1] 1fr [row2] 12fr [row3] 1fr [row4];
+    background: linear-gradient(to bottom right, rgba(0,255,150,0.5), rgba(50,100,200,0.5));
+}
