@@ -13,7 +13,7 @@ import Meditation from './components/Meditation/Meditation.js';
 import './App.css';
 
 
-const isAuthenticated = JSON.parse(localStorage.getItem('isAuthenticated'));
+const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     return (

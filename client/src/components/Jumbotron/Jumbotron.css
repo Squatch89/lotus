@@ -24,6 +24,7 @@ body {
     color: white;
     border-radius: 10%;
     text-decoration: none;
+    margin: 2px;
 }
 
 .btn-primary {

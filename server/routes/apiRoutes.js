@@ -91,7 +91,7 @@ const verifyCookie = (req, res, next) => {
 
 
 apiRouter.get('/user', verifyCookie, (req, res) => {
-    res.json({msg:"HapiRoutery to be here"});
+    res.json({msg:"Happy to be here"});
 });
 
 module.exports =apiRouter;

@@ -7,6 +7,7 @@ import logo from "../Images/logo.png";
 const Jumbotron = () => {
     return (
 
+        <div className="container">
         <div className="jumbotron text-center">
             <img src={logo} alt="lotus logo" id="biglogo"/>
             <h1>Lotus Tracker</h1>
@@ -15,6 +16,7 @@ const Jumbotron = () => {
             <p className="lead">
                 <Link className="btn btn-primary btn-lg" to="/signin">Sign In</Link>
             </p>
+        </div>
         </div>
     )
 };

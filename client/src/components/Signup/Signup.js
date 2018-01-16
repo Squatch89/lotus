@@ -21,8 +21,8 @@ class Signup extends Component {
 
         axios.post('/api/signup', this.state)
             .then((data) => {
-                console.log(data);
-                localStorage.setItem('isAuthenticated', JSON.stringify(true));
+                sessionStorage.setItem('isAuthenticated', JSON.stringify(true));
+            }).then((data) => {
                 this.props.history.push('/user');
             })
             .catch((err) => {
@@ -39,19 +39,23 @@ class Signup extends Component {
                     <input
                         type="text"
                         name="username"
+                        className="input"
+                        placeholder="username"
                         onChange={this.getValues}/> <br/>
 
 
                     <input
                         type="password"
                         name="password"
+                        className="input"
+                        placeholder="password"
                         onChange={this.getValues}/> <br/>
 
-                    <button onClick={this.sendData}>Sign Up</button>
+                    <button className="btn btn-primary" onClick={this.sendData}>Sign Up</button>
                 </form>
 
 
-                <Link to = '/signin'> <button>Go to Signin</button> </Link>
+                <Link to = '/signin'> <button className="btn btn-primary">Go to Signin</button> </Link>
 
             </div>
         );
