@@ -1,8 +1,7 @@
 .circle {
     background: #fafcf7;
-    width: 750px;
-    height: 750px;
-    margin: auto;
+    width: 500px;
+    height: 500px;
     border-radius: 50%;
     overflow: hidden;
     -webkit-animation:grow 10s infinite;

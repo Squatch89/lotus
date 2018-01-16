@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Button from '../Button/Button.js';
-// import Audio from "../Audio/Audio.js";
+import Wrapper from '../Wrapper/Wrapper.js';
+import Container from '../Container/Container.js';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 import './Meditation.css';
 import ForestOne from './Audio/Forest-1.wav';
 import ForestTwo from './Audio/Forest-2.wav';
@@ -66,18 +69,30 @@ class Meditation extends Component {
     render() {
         if (this.state.meditationType === "Audio") {
             return (
-                <div>
-                    <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
-                    {this.state.meditationSelected ? <audio controls ref="audio">
-                        <source src={this.state.chosenAudio} type="audio/wav"/>
-                        not supported
-                    </audio> : ''}
-                </div>
+                <Wrapper>
+                    <Header/>
+                    <Container>
+                        <div>
+                            <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
+                            {this.state.meditationSelected ? <audio controls ref="audio">
+                                <source src={this.state.chosenAudio} type="audio/wav"/>
+                                not supported
+                            </audio> : ''}
+                        </div>
+                    </Container>
+                    <Footer/>
+                </Wrapper>
             )
         }
         else {
             return (
-                <BreathCircle {...this.state} clickHandler={this.clickHandler}/>
+                <Wrapper>
+                    <Header/>
+                    <Container>
+                        <BreathCircle {...this.state} clickHandler={this.clickHandler}/>
+                    </Container>
+                    <Footer/>
+                </Wrapper>
             )
         }
     }
@@ -147,10 +162,11 @@ const BreathCircle = (props) => {
     }
     else if (props.meditationSelected && props.meditationType === "Breath") {
         return (
-            <div>
-                <div>Breathe fully into your stomach as the circle expands, and fully release as the circle contracts</div>
+            <span>
+                <div>Breathe fully into your stomach as the circle expands, and fully release as the circle contracts
+                </div>
                 <div className="circle"></div>
-            </div>
+            </span>
         )
     }
 };

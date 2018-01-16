@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Wrapper from '../Wrapper/Wrapper.js';
+import Container from '../Container/Container.js';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 import './User.css';
 
 // creates User component to render to the page
@@ -13,7 +17,7 @@ class User extends Component {
     }
     
     sendToDB = () => {
-    //this needs to send data to the db connected with the logged in user
+        //this needs to send data to the db connected with the logged in user
         //it should probably return something letting us know that it was successful
         
         //will limit to one check in per day on DB side of things
@@ -32,25 +36,37 @@ class User extends Component {
     render() {
         if (!this.state.checkedIn) {
             return (
-                <div>
-                    <div className="jumbotron text-center">
-                        <h1>User</h1>
-                        <hr className="hr"/>
-                        <p>Tell us how you're feeling right now.</p>
-                        <p className="lead">
-                            <Link className="btn btn-primary btn-lg" to="/">Home</Link>
-                        </p>
-                    </div>
-                    <div>How has your day been</div>
-                    <i id="good" onClick={this.checkIn} className="fa fa-smile-o fa-5x" aria-hidden="true"/>
-                    <i id="neutral" onClick={this.checkIn} className="fa fa-meh-o fa-5x" aria-hidden="true"/>
-                    <i id="bad" onClick={this.checkIn} className="fa fa-frown-o fa-5x" aria-hidden="true"/>
-                </div>
+                <Wrapper>
+                    <Header/>
+                    <Container>
+                        <div>
+                            <div className="jumbotron text-center">
+                                <h1>User</h1>
+                                <hr className="hr"/>
+                                <p>Tell us how you're feeling right now.</p>
+                                <p className="lead">
+                                    <Link className="btn btn-primary btn-lg" to="/">Home</Link>
+                                </p>
+                            </div>
+                            <div>How has your day been</div>
+                            <i id="good" onClick={this.checkIn} className="fa fa-smile-o fa-5x" aria-hidden="true"/>
+                            <i id="neutral" onClick={this.checkIn} className="fa fa-meh-o fa-5x" aria-hidden="true"/>
+                            <i id="bad" onClick={this.checkIn} className="fa fa-frown-o fa-5x" aria-hidden="true"/>
+                        </div>
+                    </Container>
+                    <Footer/>
+                </Wrapper>
             )
         }
         else {
             return (
-                <MedOrTrend {...this.state}/>
+                <Wrapper>
+                    <Header/>
+                    <Container>
+                        <MedOrTrend {...this.state}/>
+                    </Container>
+                    <Footer/>
+                </Wrapper>
             )
         }
     }
