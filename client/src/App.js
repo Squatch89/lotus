@@ -12,7 +12,6 @@ import Trends from './components/Trends/Trends.js';
 import Meditation from './components/Meditation/Meditation.js';
 import './App.css';
 
-
 const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
 
 const PrivateRoute = ({component: Component, ...rest}) => {
