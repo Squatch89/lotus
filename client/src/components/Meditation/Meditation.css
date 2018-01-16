@@ -1,67 +1,42 @@
-/*.circle {*/
-    /*border-radius: 50%;*/
-    /*border: 5px solid white;*/
-    /*width: 25px;*/
-    /*height: 25px;*/
-    /*!* width and height can be anything, as long as they're equal *!*/
-/*}*/
-
 .circle {
-    background-color: #c0392b;
-    color: white;
-    width: 500px;
-    height: 500px;
-    margin: 30px auto;
-    text-align: justify;
-    transition: all 3s ease;
-    /* new function syntax for webkit browsers */
-    shape-inside: circle(210px at 250px 250px);
-    -webkit-clip-path: circle(210px at 250px 250px);
-    
-    /* old function syntax in Blink */
-    shape-inside: circle(250px, 250px, 210px);
-    -webkit-clip-path: circle(250px, 250px, 210px);
-    
-    shape-padding: 15px;
-}
-.circle:hover{
-    -webkit-animation: scale 10s ease infinite;
-}
-.circle:hover .extra {
-    -webkit-animation: show 10s ease infinite;
+    background: #fafcf7;
+    width: 750px;
+    height: 750px;
+    margin: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    -webkit-animation:grow 10s infinite;
 }
 
-@-webkit-keyframes scale {
+@-webkit-keyframes grow {
     0% {
-        shape-inside: circle(250px, 250px, 210px);
-        -webkit-clip-path: circle(250px, 250px, 210px);
-        shape-inside: circle(210px at 250px 250px);
-        -webkit-clip-path: circle(210px at 250px 250px);
+        -webkit-transform: scale( 0.01 );-moz-transform: scale( 0.01 );-o-transform: scale( 0.01 );-ms-transform: scale( 0.01 );transform: scale( 0.01 );
     }
+    
     50% {
-        shape-inside: circle(250px, 250px, 250px);
-        -webkit-clip-path: circle(250px, 250px, 250px);
-        shape-inside: circle(250px at 250px 250px);
-        -webkit-clip-path: circle(250px at 250px 250px);
+        -webkit-transform: scale( 0.5 );-moz-transform: scale( 0.5 );-o-transform: scale( 0.5 );-ms-transform: scale( 0.5 );transform: scale( 0.5 );
     }
+    
     100% {
-        shape-inside: circle(250px, 250px, 210px);
-        -webkit-clip-path: circle(250px, 250px, 210px);
-        shape-inside: circle(210px at 250px 250px);
-        -webkit-clip-path: circle(210px at 250px 250px);
+        -webkit-transform: scale( 0.01 );-moz-transform: scale( 0.01 );-o-transform: scale( 0.01 );-ms-transform: scale( 0.01 );transform: scale( 0.01 );
     }
 }
-@keyframes scale {
-    0% {
-        shape-inside: circle(210px at 250px 250px);
-        -webkit-clip-path: circle(210px at 250px 250px);
-    }
-    50% {
-        shape-inside: circle(250px at 250px 250px);
-        -webkit-clip-path: circle(250px at 250px 250px);
-    }
-    100% {
-        shape-inside: circle(210px at 250px 250px);
-        -webkit-clip-path: circle(210px at 250px 250px);
-    }
-}
+
+
+/*.circle {*/
+    /*background: red;*/
+    /*animation: circle 10s infinite;*/
+    /*border-radius: 50%;*/
+    /*width: 500px; height: 500px;*/
+/*}*/
+/*@keyframes circle {*/
+    /*0% {*/
+        /*transform: scale(0);*/
+    /*}*/
+    /*50% {*/
+        /*transform: scale(1);*/
+    /*}*/
+    /*100% {*/
+        /*transform: scale(0);*/
+    /*}*/
+/*}*/

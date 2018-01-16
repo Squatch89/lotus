@@ -33,7 +33,7 @@ class App extends Component {
                     <Route path="/" exact component={Jumbotron}/>
                     <Route path="/user" component={User}/>
                     <Route path="/trends" component={Trends}/>
-                    <Route path="/meditation" render={(props) => <Meditation {...props}/>}/>
+                    <Route path="/meditation" component={Meditation}/>
                 </div>
                 
                 {/*Footer rendered only on certain routes*/}
