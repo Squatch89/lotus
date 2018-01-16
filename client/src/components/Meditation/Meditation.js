@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Header from '../Header/Header.js';
+import Footer from '../Footer/Footer.js';
 import Button from '../Button/Button.js';
 // import Audio from "../Audio/Audio.js";
 import './Meditation.css';
