@@ -76,7 +76,6 @@ class Meditation extends Component {
             )
         }
         else {
-            
             return (
                 <BreathCircle {...this.state} clickHandler={this.clickHandler}/>
             )

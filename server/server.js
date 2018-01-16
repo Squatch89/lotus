@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //     mongoose.connect(process.env.MONGODB_URI);
 // }
 // else {
-//     mongoose.connect("mongodb://localhost/lotudDB", {
+//     mongoose.connect("mongodb://localhost/lotusDB", {
 //         useMongoClient: true
 //     });
 // }
