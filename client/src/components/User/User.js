@@ -14,17 +14,21 @@ class User extends Component {
         super();
         this.state = {
             checkedIn: false,
+            username:  JSON.parse(sessionStorage.getItem('UN'))
         };
     }
     
-    sendToDB = (mood) => {
+    sendToDB = (mood, username) => {
         
-        axios.post('/api/mood', mood)
+        // const username = user.replace
+        
+        axios.post('/api/mood', {username, mood})
             .then((data) => {
                 console.log(data);
             })
             .catch((err) => {
                 console.log("There was an error.");
+                console.log(err);
             })
         //this needs to send data to the db connected with the logged in user
         //it should probably return something letting us know that it was successful
@@ -35,11 +39,11 @@ class User extends Component {
     
     checkIn = (id) => {
         const mood = id.target.id;
-        console.log(id.target);
+        console.log(this.state.username);
         console.log("ID:",mood);
         this.setState({checkedIn: true});
         
-        this.sendToDB(mood);
+        this.sendToDB(mood, this.state.username);
         //function to send data to the db of the logged in user
         // sendToDB(id.target.id);
     };

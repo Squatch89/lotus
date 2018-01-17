@@ -22,6 +22,7 @@ class Signin extends Component {
         axios.post('/api/signin', this.state)
             .then((data) => {
                 sessionStorage.setItem('isAuthenticated', JSON.stringify(true));
+                sessionStorage.setItem('UN', JSON.stringify(this.state.username));
             }).then((data) => {
                 this.props.history.push('/user');
 
@@ -33,11 +34,11 @@ class Signin extends Component {
                 this.setState({loginerror: true});
             });
     };
-
+    
     signOut = (event) => {
         event.preventDefault();
-
-        sessionStorage.setItem('isAuthenticated', JSON.stringify(false));
+        sessionStorage.removeItem('isAuthenticated');
+        sessionStorage.removeItem('UN');
         this.props.history.push('/');
     };
 

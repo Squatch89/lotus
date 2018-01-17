@@ -4,9 +4,9 @@ const Schema = mongoose.Schema;
 
 const TrendsSchema = new Schema({
     mood: {
-        type: String,
-        unique: true
-    }
+        type: String
+    },
+    date: { type: Date, default: Date.now },
 });
 const Trends = mongoose.model("Trends", TrendsSchema);
 

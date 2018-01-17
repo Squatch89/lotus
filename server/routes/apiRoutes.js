@@ -5,10 +5,6 @@ const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const db = require("../models");
 
-apiRouter.get("/", function(req, res) {
-    res.send("woooo it works")
-});
-
 const generateToken = (_id, username) => {
     const token = jwt.sign({
         exp: Math.floor(Date.now() / 1000) + (60 * 60), // a day
@@ -85,13 +81,22 @@ const verifyCookie = (req, res, next) => {
 
 apiRouter.post('/mood', (req, res) => {
     console.log("Got the post!");
-    console.log(req.body);
+    const {username, mood} = req.body;
+    console.log(username);
+    console.log(mood);
     
-    db.User.findOne({})
-        .then((user) => {
-            
+    db.Trends.create({mood:mood})
+        .then((dbTrend) => {
+            console.log("first .then");
+            return db.User.findOneAndUpdate({username: username}, {$addToSet: {mood: dbTrend._id}}, {new: true});
         })
-   res.send("got some data back here buddy");
+        .then((dbUser) => {
+            console.log("mood logged");
+            res.json(dbUser);
+        })
+        .catch((err) => {
+            res.status(400).json({err:"Connection error"});
+        });
 });
 
 apiRouter.get('/user', verifyCookie, (req, res) => {
