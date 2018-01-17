@@ -1,6 +1,6 @@
 .container{
-    grid-column-start: col3;
-    grid-column-end: col9;
+    grid-column-start: col2;
+    grid-column-end: col10;
     grid-row-start: row4;
     grid-row-end: row5;
     padding: 0;
