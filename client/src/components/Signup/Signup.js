@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import Wrapper from '../Wrapper/Wrapper.js';
+import Container from '../Container/Container.js';
 
 
 class Signup extends Component {
@@ -23,8 +25,8 @@ class Signup extends Component {
             .then((data) => {
                 sessionStorage.setItem('isAuthenticated', JSON.stringify(true));
             }).then((data) => {
-                this.props.history.push('/user');
-            })
+            this.props.history.push('/user');
+        })
             .catch((err) => {
                 console.log(err);
             });
@@ -33,31 +35,37 @@ class Signup extends Component {
     render() {
 
         return (
-            <div className="jumbotron text-center">
+            <Wrapper>
+                <Container>
+                    <div className="jumbotron text-center">
 
-                <form>
-                    <input
-                        type="text"
-                        name="username"
-                        className="input"
-                        placeholder="username"
-                        onChange={this.getValues}/> <br/>
-
-
-                    <input
-                        type="password"
-                        name="password"
-                        className="input"
-                        placeholder="password"
-                        onChange={this.getValues}/> <br/>
-
-                    <button className="btn btn-primary" onClick={this.sendData}>Sign Up</button>
-                </form>
+                        <form>
+                            <input
+                                type="text"
+                                name="username"
+                                className="input"
+                                placeholder="username"
+                                onChange={this.getValues}/> <br/>
 
 
-                <Link to = '/signin'> <button className="btn btn-primary">Go to Signin</button> </Link>
+                            <input
+                                type="password"
+                                name="password"
+                                className="input"
+                                placeholder="password"
+                                onChange={this.getValues}/> <br/>
 
-            </div>
+                            <button className="btn btn-primary" onClick={this.sendData}>Sign Up</button>
+                        </form>
+
+
+                        <Link to='/signin'>
+                            <button className="btn btn-primary">Go to Signin</button>
+                        </Link>
+
+                    </div>
+                </Container>
+            </Wrapper>
         );
     }
 

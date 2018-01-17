@@ -31,7 +31,7 @@ const PublicRoute = ({component: Component, ...rest}) => {
         <Route
             exact
             {...rest}
-            render={(props) =>  <Component {...props} />}
+            render={(props) => <Component {...props} /> }
         />
     )
 };
