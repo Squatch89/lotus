@@ -5,6 +5,7 @@ import Container from '../Container/Container.js';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import './User.css';
+import axios from 'axios';
 
 // creates User component to render to the page
 class User extends Component {
@@ -12,11 +13,19 @@ class User extends Component {
     constructor() {
         super();
         this.state = {
-            checkedIn: false
+            checkedIn: false,
         };
     }
     
-    sendToDB = () => {
+    sendToDB = (mood) => {
+        
+        axios.post('/api/mood', mood)
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => {
+                console.log("There was an error.");
+            })
         //this needs to send data to the db connected with the logged in user
         //it should probably return something letting us know that it was successful
         
@@ -24,11 +33,13 @@ class User extends Component {
         //should update user if they come back to user page that they have already checked in
     };
     
-    
     checkIn = (id) => {
-        console.log("ID: ", id.target.id);
+        const mood = id.target.id;
+        console.log(id.target);
+        console.log("ID:",mood);
         this.setState({checkedIn: true});
         
+        this.sendToDB(mood);
         //function to send data to the db of the logged in user
         // sendToDB(id.target.id);
     };

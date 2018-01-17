@@ -7,11 +7,6 @@ const TrendsSchema = new Schema({
         type: String,
         unique: true
     }
-    //how you make relations in mongo
-    // comment: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: "Comment"
-    // }]
 });
 const Trends = mongoose.model("Trends", TrendsSchema);
 

@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const db = require("../models");
 
-
 apiRouter.get("/", function(req, res) {
     res.send("woooo it works")
 });
@@ -51,9 +50,6 @@ apiRouter.post("/signup", (req, res) => {
         });
 });
 
-
-
-
 apiRouter.post("/signin", (req, res) => {
     const {username, password} = req.body;
 
@@ -75,7 +71,6 @@ apiRouter.post("/signin", (req, res) => {
 
 });
 
-
 const verifyCookie = (req, res, next) => {
     const {token} = req.cookies;
     jwt.verify(token, 'awesome', (err, decoded) => {
@@ -88,7 +83,16 @@ const verifyCookie = (req, res, next) => {
 
 };
 
-
+apiRouter.post('/mood', (req, res) => {
+    console.log("Got the post!");
+    console.log(req.body);
+    
+    db.User.findOne({})
+        .then((user) => {
+            
+        })
+   res.send("got some data back here buddy");
+});
 
 apiRouter.get('/user', verifyCookie, (req, res) => {
     res.json({msg:"Happy to be here"});
