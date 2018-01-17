@@ -74,9 +74,13 @@ class Meditation extends Component {
                     <Container>
                         <div>
                             <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
-                            {this.state.meditationSelected ? <audio controls ref="audio">
-                                <source src={this.state.chosenAudio} type="audio/wav"/>
+
+                            {this.state.meditationSelected ? <audio controls ref="audio" autoPlay>
+
+                                <source src={this.state.chosenAudio} type="audio/wav" />
+
                                 not supported
+
                             </audio> : ''}
                         </div>
                     </Container>

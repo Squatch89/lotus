@@ -1,8 +1,8 @@
 .container{
-    grid-column-start: col2;
-    grid-column-end: col2;
-    grid-row-start: row2;
-    grid-row-end: row2;
+    grid-column-start: col3;
+    grid-column-end: col8;
+    grid-row-start: row3;
+    grid-row-end: row5;
     padding: 0;
     margin: 0;
     display: flex;
