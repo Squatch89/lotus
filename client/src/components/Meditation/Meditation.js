@@ -75,7 +75,7 @@ class Meditation extends Component {
                         <div>
                             <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
 
-                            {this.state.meditationSelected ? <audio controls ref="audio" autoPlay>
+                            {this.state.meditationSelected ? <audio controls ref="audio" autoPlay loop>
 
                                 <source src={this.state.chosenAudio} type="audio/wav" />
 
