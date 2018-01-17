@@ -6,15 +6,36 @@ import Container from '../Container/Container.js';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import './Trends.css';
+import axios from 'axios';
 
 // creates Trends component to render to the page
 class Trends extends Component {
     constructor() {
         super();
         this.state = {
-            timeFrame: ["Week", "Month"]
+            trends: [],
+            timeFrame: ["Week", "Month"],
+            username: JSON.parse(sessionStorage.getItem('UN'))
         };
     }
+    
+    getFromDB = () => {
+        
+        console.log(this.state.username);
+        
+        
+        axios.get(`/api/mood/:${this.state.username}/trends `)
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => {
+                console.log("There was an error.");
+                console.log(err);
+            })
+        
+        // this.setState({trends:})
+    };
+    
     
     render() {
         return (
@@ -30,7 +51,7 @@ class Trends extends Component {
                         {/*<Link className="btn btn-primary btn-lg" to="/">Home</Link>*/}
                         {/*</p>*/}
                         {/*</div>*/}
-                        
+                        <button onClick={this.getFromDB}> Get Trends </button>
                         <Chart
                             chartType="PieChart"
                             data={[["Task", "Hours per Day"], ["Good", 4], ["Neutral", 2], ["Bad", 1]]}
