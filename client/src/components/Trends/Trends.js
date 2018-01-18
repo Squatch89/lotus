@@ -13,9 +13,12 @@ class Trends extends Component {
     constructor() {
         super();
         this.state = {
-            trends: [],
+            good: [],
+            neutral: [],
+            bad: [],
             timeFrame: ["Week", "Month"],
-            username: JSON.parse(sessionStorage.getItem('UN'))
+            username: JSON.parse(sessionStorage.getItem('UN')),
+            pulled: false
         };
     }
     
@@ -23,10 +26,27 @@ class Trends extends Component {
         
         console.log(this.state.username);
         
-        
-        axios.get(`/api/mood/:${this.state.username}/trends `)
+        axios.get(`/api/mood/trends/${this.state.username}`)
             .then((data) => {
-                console.log(data);
+                console.log(data.data);
+                data.data.forEach((ele, index) => {
+                    console.log(ele.mood);
+                    if (ele.mood === "good") {
+                        this.setState({good: [...this.state.good, ele.mood]})
+                    }
+                    else if (ele.mood === "neutral") {
+                        this.setState({neutral: [...this.state.neutral, ele.mood]})
+                    }
+                    else if (ele.mood === "bad") {
+                        this.setState({bad: [...this.state.bad, ele.mood]})
+                    }
+                });
+                console.log("this is good");
+                console.log(this.state.good);
+                console.log("this is neutral");
+                console.log(this.state.neutral);
+                console.log("this is bad");
+                console.log(this.state.bad);
             })
             .catch((err) => {
                 console.log("There was an error.");
@@ -36,6 +56,13 @@ class Trends extends Component {
         // this.setState({trends:})
     };
     
+    componentWillMount() {
+        this.getFromDB();
+    }
+    
+    componentDidMount() {
+        this.setState({pulled: true});
+    }
     
     render() {
         return (
@@ -43,25 +70,18 @@ class Trends extends Component {
                 <Header/>
                 <Container>
                     <div className="chart">
-                        {/*<div className="jumbotron text-center">*/}
-                        {/*<h1>Trends</h1>*/}
-                        {/*<hr className="hr"/>*/}
-                        {/*<p>Track your mental health</p>*/}
-                        {/*<p className="lead">*/}
-                        {/*<Link className="btn btn-primary btn-lg" to="/">Home</Link>*/}
-                        {/*</p>*/}
-                        {/*</div>*/}
-                        <button onClick={this.getFromDB}> Get Trends </button>
+                        {/*<button onClick={this.getFromDB}> Get Trends </button>*/}
+                        { this.state.pulled ?
                         <Chart
                             chartType="PieChart"
-                            data={[["Task", "Hours per Day"], ["Good", 4], ["Neutral", 2], ["Bad", 1]]}
+                            data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
                             options={{"title": "How My Week Has Gone", "backgroundColor": "transparent"}}
                             graph_id="PieChart"
                             width="100%"
                             height="400px"
                             legend_toggle
                             className="chartBg"
-                        />
+                        /> : null}
                     </div>
                 </Container>
                 <Footer/>

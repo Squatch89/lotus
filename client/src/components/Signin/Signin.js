@@ -25,7 +25,6 @@ class Signin extends Component {
                 sessionStorage.setItem('UN', JSON.stringify(this.state.username));
             }).then((data) => {
                 this.props.history.push('/user');
-
         })
             .catch((err) => {
                 // Not signed
