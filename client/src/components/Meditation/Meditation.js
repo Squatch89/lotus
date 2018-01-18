@@ -129,19 +129,19 @@ const PresentAudio = (props) => {
                     <hr className="hr"/>
                     <p>Relax your mind through meditation</p>
                     <p className="lead">
-                        <Link className="btn btn-primary btn-lg" to="/">Home</Link>
+                        {
+                            props.audio.map((audio, index) => (
+                                <Button
+                                    key={audio}
+                                    id={index}
+                                    clickHandler={props.clickHandler}
+                                    name={audio}
+                                />
+                            ))
+                        }
                     </p>
                 </div>
-                {
-                    props.audio.map((audio, index) => (
-                        <Button
-                            key={audio}
-                            id={index}
-                            clickHandler={props.clickHandler}
-                            name={audio}
-                        />
-                    ))
-                }
+
             </div>
         )
     }
