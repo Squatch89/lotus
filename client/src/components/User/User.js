@@ -60,13 +60,12 @@ class User extends Component {
                                 <hr className="hr"/>
                                 <p>Tell us how you're feeling right now.</p>
                                 <p className="lead">
-                                    <Link className="btn btn-primary btn-lg" to="/">Home</Link>
+                                    <i id="good" onClick={this.checkIn} className="fa fa-smile-o fa-5x moodbtn" aria-hidden="true"/>
+                                    <i id="neutral" onClick={this.checkIn} className="fa fa-meh-o fa-5x moodbtn" aria-hidden="true"/>
+                                    <i id="bad" onClick={this.checkIn} className="fa fa-frown-o fa-5x moodbtn" aria-hidden="true"/>
                                 </p>
                             </div>
-                            <div>How has your day been</div>
-                            <i id="good" onClick={this.checkIn} className="fa fa-smile-o fa-5x" aria-hidden="true"/>
-                            <i id="neutral" onClick={this.checkIn} className="fa fa-meh-o fa-5x" aria-hidden="true"/>
-                            <i id="bad" onClick={this.checkIn} className="fa fa-frown-o fa-5x" aria-hidden="true"/>
+
                         </div>
                     </Container>
                     <Footer/>
