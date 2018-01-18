@@ -95,6 +95,23 @@ apiRouter.post('/mood', (req, res) => {
             res.json(dbUser);
         })
         .catch((err) => {
+            console.log(err);
+            res.status(400).json({err:"Connection error"});
+        });
+});
+
+apiRouter.get('/mood/trends/:username', (req, res) => {
+    
+    console.log("received get request");
+    console.log(req.params.username);
+    
+    db.User.findOne({username: req.params.username})
+        .populate("mood")
+        .then((userTrends) => {
+            console.log(userTrends.mood);
+            res.json(userTrends.mood);
+        })
+        .catch((err) => {
             res.status(400).json({err:"Connection error"});
         });
 });

@@ -20,8 +20,6 @@ class User extends Component {
     
     sendToDB = (mood, username) => {
         
-        // const username = user.replace
-        
         axios.post('/api/mood', {username, mood})
             .then((data) => {
                 console.log(data);
