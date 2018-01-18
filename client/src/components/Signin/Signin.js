@@ -50,6 +50,9 @@ class Signin extends Component {
                 <Container>
                     <div className="jumbotron text-center">
 
+                        <h1>Sign In</h1>
+                        <hr className="hr"/>
+
                         <form>
                             <input
                                 type="text"

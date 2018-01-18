@@ -19,6 +19,7 @@ html {
     padding: 20px;
     border-radius: 5px;
     width: 70vw;
+    max-width: 800px;
 }
 
 .hr {

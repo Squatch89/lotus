@@ -39,6 +39,9 @@ class Signup extends Component {
                 <Container>
                     <div className="jumbotron text-center">
 
+                        <h1>Sign Up</h1>
+                        <hr className="hr"/>
+
                         <form>
                             <input
                                 type="text"
