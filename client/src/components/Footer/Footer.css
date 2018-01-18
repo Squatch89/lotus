@@ -7,4 +7,7 @@
     text-align: center;
     color: white;
     padding-top: 30px;
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    width: 100%;
 }

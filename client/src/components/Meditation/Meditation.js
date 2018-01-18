@@ -166,11 +166,11 @@ const BreathCircle = (props) => {
     }
     else if (props.meditationSelected && props.meditationType === "Breath") {
         return (
-            <span>
-                <div>Breathe fully into your stomach as the circle expands, and fully release as the circle contracts
+            <div className="circleContainer">
+                <div className="circleText">Breathe fully into your stomach as the circle expands, and fully release as the circle contracts
                 </div>
                 <div className="circle"></div>
-            </span>
+            </div>
         )
     }
 };
