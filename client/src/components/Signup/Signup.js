@@ -24,6 +24,7 @@ class Signup extends Component {
         axios.post('/api/signup', this.state)
             .then((data) => {
                 sessionStorage.setItem('isAuthenticated', JSON.stringify(true));
+                sessionStorage.setItem('UN', JSON.stringify(this.state.username));
             }).then((data) => {
             this.props.history.push('/user');
         })
