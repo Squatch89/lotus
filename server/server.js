@@ -19,6 +19,7 @@ app.use(cookieParser());
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 // commented out until mongo is set up to reduce terminal tabs required to run project in development
 mongoose.Promise = Promise;
 
