@@ -5,6 +5,7 @@ import Container from '../Container/Container.js';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import './User.css';
+import axios from 'axios';
 
 // creates User component to render to the page
 class User extends Component {
@@ -12,11 +13,21 @@ class User extends Component {
     constructor() {
         super();
         this.state = {
-            checkedIn: false
+            checkedIn: false,
+            username:  JSON.parse(sessionStorage.getItem('UN'))
         };
     }
     
-    sendToDB = () => {
+    sendToDB = (mood, username) => {
+        
+        axios.post('/api/mood', {username, mood})
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((err) => {
+                console.log("There was an error.");
+                console.log(err);
+            })
         //this needs to send data to the db connected with the logged in user
         //it should probably return something letting us know that it was successful
         
@@ -24,11 +35,13 @@ class User extends Component {
         //should update user if they come back to user page that they have already checked in
     };
     
-    
     checkIn = (id) => {
-        console.log("ID: ", id.target.id);
+        const mood = id.target.id;
+        console.log(this.state.username);
+        console.log("ID:",mood);
         this.setState({checkedIn: true});
         
+        this.sendToDB(mood, this.state.username);
         //function to send data to the db of the logged in user
         // sendToDB(id.target.id);
     };
@@ -45,13 +58,12 @@ class User extends Component {
                                 <hr className="hr"/>
                                 <p>Tell us how you're feeling right now.</p>
                                 <p className="lead">
-                                    <Link className="btn btn-primary btn-lg" to="/">Home</Link>
+                                    <i id="good" onClick={this.checkIn} className="fa fa-smile-o fa-5x moodbtn" aria-hidden="true"/>
+                                    <i id="neutral" onClick={this.checkIn} className="fa fa-meh-o fa-5x moodbtn" aria-hidden="true"/>
+                                    <i id="bad" onClick={this.checkIn} className="fa fa-frown-o fa-5x moodbtn" aria-hidden="true"/>
                                 </p>
                             </div>
-                            <div>How has your day been</div>
-                            <i id="good" onClick={this.checkIn} className="fa fa-smile-o fa-5x" aria-hidden="true"/>
-                            <i id="neutral" onClick={this.checkIn} className="fa fa-meh-o fa-5x" aria-hidden="true"/>
-                            <i id="bad" onClick={this.checkIn} className="fa fa-frown-o fa-5x" aria-hidden="true"/>
+
                         </div>
                     </Container>
                     <Footer/>

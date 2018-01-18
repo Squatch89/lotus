@@ -1,11 +1,35 @@
 #good {
-    color: green;
+    color: white;
 }
 
 #neutral {
-    color: yellow;
+    color: white;
 }
 
 #bad {
-    color: red;
+    color: white;
+}
+
+.moodbtn {
+    margin: 30px;
+}
+
+.moodbtn:hover {
+    font-size: 700%;
+    margin: 0;
+    padding: 0 16px 0 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    .moodbtn {
+        font-size: 350%;
+        margin: 20px;
+    }
+
+    .moodbtn:hover {
+        font-size: 400%;
+        margin: 0;
+        padding: 0 17px 0 17px;
+    }
 }

@@ -5,13 +5,13 @@ import logo from "../Images/logo.png";
 import Wrapper from '../Wrapper/Wrapper.js';
 import Container from '../Container/Container.js';
 
+
 // creates Jumbotron component to render to the  landing page
 const Jumbotron = () => {
     return (
         
         <Wrapper>
             <Container>
-                
                 <div className="jumbotron text-center">
                     <img src={logo} alt="lotus logo" id="biglogo"/>
                     <h1>Lotus Tracker</h1>
@@ -23,7 +23,6 @@ const Jumbotron = () => {
                 </div>
             </Container>
         </Wrapper>
-    
     )
 };
 

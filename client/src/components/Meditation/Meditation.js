@@ -74,9 +74,13 @@ class Meditation extends Component {
                     <Container>
                         <div>
                             <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
-                            {this.state.meditationSelected ? <audio controls ref="audio">
-                                <source src={this.state.chosenAudio} type="audio/wav"/>
+
+                            {this.state.meditationSelected ? <audio controls ref="audio" autoPlay loop>
+
+                                <source src={this.state.chosenAudio} type="audio/wav" />
+
                                 not supported
+
                             </audio> : ''}
                         </div>
                     </Container>
@@ -125,19 +129,19 @@ const PresentAudio = (props) => {
                     <hr className="hr"/>
                     <p>Relax your mind through meditation</p>
                     <p className="lead">
-                        <Link className="btn btn-primary btn-lg" to="/">Home</Link>
+                        {
+                            props.audio.map((audio, index) => (
+                                <Button
+                                    key={audio}
+                                    id={index}
+                                    clickHandler={props.clickHandler}
+                                    name={audio}
+                                />
+                            ))
+                        }
                     </p>
                 </div>
-                {
-                    props.audio.map((audio, index) => (
-                        <Button
-                            key={audio}
-                            id={index}
-                            clickHandler={props.clickHandler}
-                            name={audio}
-                        />
-                    ))
-                }
+
             </div>
         )
     }
@@ -162,11 +166,11 @@ const BreathCircle = (props) => {
     }
     else if (props.meditationSelected && props.meditationType === "Breath") {
         return (
-            <span>
-                <div>Breathe fully into your stomach as the circle expands, and fully release as the circle contracts
+            <div className="circleContainer">
+                <div className="circleText">Breathe fully into your stomach as the circle expands, and fully release as the circle contracts
                 </div>
                 <div className="circle"></div>
-            </span>
+            </div>
         )
     }
 };

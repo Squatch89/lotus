@@ -9,7 +9,11 @@ const UserSchema = new Schema({
     },
     password: {
         type: String
-    }
+    },
+    mood: [{
+        type: Schema.Types.ObjectId,
+        ref: "Trends"
+    }]
 });
 
 const User = mongoose.model("User", UserSchema);
