@@ -25,9 +25,9 @@ class Signin extends Component {
             .then((data) => {
                 sessionStorage.setItem('isAuthenticated', JSON.stringify(true));
                 sessionStorage.setItem('UN', JSON.stringify(this.state.username));
-                setTimeout(this.props.history.push('/user'), 10000);
-
-            })
+            }).then((data)=> {
+            this.props.history.push('/user');
+        })
             .catch((err) => {
                 // Not signed
                 console.log("Error Happened");
