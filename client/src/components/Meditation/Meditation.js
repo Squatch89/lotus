@@ -93,7 +93,11 @@ class Meditation extends Component {
                 <Wrapper>
                     <Header/>
                     <Container>
+                        <div className="jumbotron">
+                            <h1>Meditation</h1>
+                            <hr className="hr"/>
                         <BreathCircle {...this.state} clickHandler={this.clickHandler}/>
+                        </div>
                     </Container>
                     <Footer/>
                 </Wrapper>
@@ -126,7 +130,7 @@ const PresentAudio = (props) => {
                 <div className="jumbotron text-center">
                     <h1>Meditation</h1>
                     <hr className="hr"/>
-                    <p>Relax your mind through meditation</p>
+                    <p>Choose a relaxing soundscape.</p>
                     <p className="lead">
                         {
                             props.audio.map((audio, index) => (
