@@ -1,11 +1,8 @@
 .container{
     grid-column-start: col4;
     grid-column-end: col18;
-    grid-row-start: row7;
-    grid-row-end: row15;
+    grid-row-start: row5;
+    grid-row-end: row11;
     padding: 0;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

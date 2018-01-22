@@ -23,12 +23,12 @@ class Header extends Component {
 
                 <Link className="navbar-brand" to="/">
                     <img src={logo} alt="lotus logo" className="littlelogo"/>
-                    <div className="brand-name">Lotus Tracker</div>
+                    <div className="brand-name navbar-link">Lotus Tracker</div>
                 </Link>
                 <div className="navbar-nav">
                     <ul className="navbar-group">
                         <li className="navbar-item">
-                            <button className="btn btn-primary" onClick={this.signOut}>Log Out</button>
+                            <button className="btn btn-primary " id="logoutBtn" onClick={this.signOut}>Log Out</button>
                         </li>
                         <li className="navbar-item">
                             <Link className="navbar-link" to="/user">User</Link>
