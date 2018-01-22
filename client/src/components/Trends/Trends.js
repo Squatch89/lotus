@@ -30,7 +30,7 @@ class Trends extends Component {
             .then((data) => {
                 console.log(data.data);
                 data.data.forEach((ele, index) => {
-                    console.log(ele.mood);
+                    // console.log(ele.mood);
                     if (ele.mood === "good") {
                         this.setState({good: [...this.state.good, ele.mood]})
                     }
@@ -56,6 +56,29 @@ class Trends extends Component {
         // this.setState({trends:})
     };
     
+    previousWeek = () => {
+        //date format is in YYYY - MM - DD
+        
+        const currentDate = new Date();
+        
+        // console.log(currentDate);
+        // console.log(currentDate.getFullYear());
+        // console.log(currentDate.getMonth() + 1);
+        // console.log(currentDate.getDate());
+        console.log(currentDate.getDay());
+        console.log(`${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`);
+        
+        axios.get(`/api/mood/trends/prevweek/${this.state.username}`)
+            .then((data) => {
+                console.log(data.data);
+                data.data.forEach((ele, index) => {
+                    let date = new Date(ele.date);
+                    console.log(date.getUTCDay());
+                    console.log(`${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`);
+                })
+            })
+    };
+    
     componentWillMount() {
         this.getFromDB();
     }
@@ -70,18 +93,19 @@ class Trends extends Component {
                 <Header/>
                 <Container>
                     <div className="chart">
+                        <button onClick={this.previousWeek}>prev week</button>
                         {/*<button onClick={this.getFromDB}> Get Trends </button>*/}
-                        { this.state.pulled ?
-                        <Chart
-                            chartType="PieChart"
-                            data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
-                            options={{"title": "How My Week Has Gone", "backgroundColor": "transparent"}}
-                            graph_id="PieChart"
-                            width="100%"
-                            height="400px"
-                            legend_toggle
-                            className="chartBg"
-                        /> : null}
+                        {this.state.pulled ?
+                            <Chart
+                                chartType="PieChart"
+                                data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
+                                options={{"title": "How My Week Has Gone", "backgroundColor": "transparent"}}
+                                graph_id="PieChart"
+                                width="100%"
+                                height="400px"
+                                legend_toggle
+                                className="chartBg"
+                            /> : null}
                     </div>
                 </Container>
                 <Footer/>
