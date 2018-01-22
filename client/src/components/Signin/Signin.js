@@ -36,13 +36,6 @@ class Signin extends Component {
             });
     };
 
-    signOut = (event) => {
-        event.preventDefault();
-        sessionStorage.removeItem('isAuthenticated');
-        sessionStorage.removeItem('UN');
-        this.props.history.push('/');
-    };
-
     render() {
 
         return (
@@ -70,7 +63,7 @@ class Signin extends Component {
                                 onChange={this.getValues}/> <br/>
 
                             <button className="btn btn-primary" onClick={this.sendData}>Sign In</button>
-                            <button className="btn btn-primary" onClick={this.signOut}>Sign Out</button>
+
                         </form>
 
                         <Link to='/signup'>
