@@ -19,12 +19,13 @@ class Trends extends Component {
             neutral: [],
             bad: [],
             //user should select which time frame they would like to see
-            timeFrame: ["Week", "Month"],
+            timeFrame: "week",
             //set currentWeek to current week number using moment
             currentWeek: currentDateMoment.week(),
             //set currentMonth to current month number using moment
             currentMonth: currentDateMoment.month() + 1,
             prevWeek: currentDateMoment.week(),
+            prevMonth: currentDateMoment.month(),
             username: JSON.parse(sessionStorage.getItem('UN')),
             pulled: false
         };
@@ -49,12 +50,6 @@ class Trends extends Component {
                         this.setState({bad: [...this.state.bad, ele.mood]})
                     }
                 });
-                console.log("this is good");
-                console.log(this.state.good);
-                console.log("this is neutral");
-                console.log(this.state.neutral);
-                console.log("this is bad");
-                console.log(this.state.bad);
             })
             .catch((err) => {
                 console.log("There was an error.");
@@ -64,22 +59,40 @@ class Trends extends Component {
         // this.setState({trends:})
     };
     
-    previousWeek = () => {
+    whichWeek = (e) => {
         //date format is in YYYY - MM - DD
-        
-        
-        //add if statement where if the current week matches the week in the data from the db, then display that info.
-        //week state will always be the current week number
-        //shadow variable will change based on how many times user clicks on previous week button
-        //each time user clicks on previous week button the shadow variable will decrement 1
-        //mimic this functionality to then return to current week
+        console.log(this.state.timeFrame);
         
         //implement week functionality into month function using same principles
-    
-        console.log(this.state.prevWeek);
-        if (this.state.prevWeek >= 0) {
-            this.setState({prevWeek: this.state.prevWeek - 1});
+        if (this.state.timeFrame === "week") {
+            if (e.target.id === "back"){
+                if (this.state.prevWeek > 0) {
+                    this.setState({prevWeek: this.state.prevWeek - 1});
+                }
+        
+            }
+            else if (e.target.id === "forward") {
+                if (this.state.prevWeek < this.state.currentWeek) {
+                    this.setState({prevWeek: this.state.prevWeek + 1});
+                }
+            }
         }
+        else if (this.state.timeFrame === "month") {
+            if (e.target.id === "back"){
+                if (this.state.prevMonth > 0) {
+                    this.setState({prevMonth: this.state.prevMonth - 1});
+                }
+        
+            }
+            else if (e.target.id === "forward") {
+                if (this.state.prevMonth < this.state.currentMonth) {
+                    this.setState({prevMonth: this.state.prevMonth + 1});
+                }
+            }
+        }
+        
+        this.setState({good: 0, neutral: 0, bad: 0});
+        
         console.log(this.state.prevWeek);
         axios.get(`/api/mood/trends/prevweek/${this.state.username}`)
             .then((data) => {
@@ -87,19 +100,49 @@ class Trends extends Component {
                 data.data.forEach((ele, index) => {
                     
                     console.log(`${moment(ele.date).year()}-${moment(ele.date).month() + 1}-${moment(ele.date).date()}`);
-    
-                    if (ele.mood === "good" && moment(ele.date).week() === this.state.prevWeek) {
-                        this.setState({good: [...this.state.good, ele.mood]})
+                    
+                    
+                    //changes data displayed in graph by week
+                    if (this.state.timeFrame === "week") {
+                        if (ele.mood === "good" && moment(ele.date).week() === this.state.prevWeek) {
+                            this.setState({good: [...this.state.good, ele.mood]})
+                        }
+                        else if (ele.mood === "neutral" && moment(ele.date).week() === this.state.prevWeek) {
+                            this.setState({neutral: [...this.state.neutral, ele.mood]})
+                        }
+                        else if (ele.mood === "bad" && moment(ele.date).week() === this.state.prevWeek) {
+                            this.setState({bad: [...this.state.bad, ele.mood]})
+                        }
                     }
-                    else if (ele.mood === "neutral" && moment(ele.date).week() === this.state.prevWeek) {
-                        this.setState({neutral: [...this.state.neutral, ele.mood]})
-                    }
-                    else if (ele.mood === "bad" && moment(ele.date).week() === this.state.prevWeek) {
-                        this.setState({bad: [...this.state.bad, ele.mood]})
+                    //changes data displayed in graph by month
+                    else if (this.state.timeFrame === "month") {
+                        if (ele.mood === "good" && moment(ele.date).month() === this.state.prevMonth) {
+                            this.setState({good: [...this.state.good, ele.mood]})
+                        }
+                        else if (ele.mood === "neutral" && moment(ele.date).month() === this.state.prevMonth) {
+                            this.setState({neutral: [...this.state.neutral, ele.mood]})
+                        }
+                        else if (ele.mood === "bad" && moment(ele.date).month() === this.state.prevMonth) {
+                            this.setState({bad: [...this.state.bad, ele.mood]})
+                        }
                     }
                 })
             })
     };
+    
+    weekOrMonth = (e) => {
+        const whichTrend = e.target.id;
+        console.log(whichTrend);
+        
+        if (whichTrend === "week") {
+            this.setState({timeFrame: "week"})
+        }
+        else if (whichTrend === "month") {
+            this.setState({timeFrame: "month"})
+        }
+    
+    };
+    
     
     componentWillMount() {
         this.getFromDB();
@@ -115,7 +158,10 @@ class Trends extends Component {
                 <Header/>
                 <Container>
                     <div className="chart">
-                        <button onClick={this.previousWeek}>prev week</button>
+                        <button id="back" onClick={this.whichWeek}>Go Back a Week/Month</button>
+                        <button id="week" onClick={this.weekOrMonth}>Weekly Trends</button>
+                        <button id="month" onClick={this.weekOrMonth}>Monthly Trends</button>
+                        <button id="forward" onClick={this.whichWeek}>Go Forward a Week/Month</button>
                         {/*<button onClick={this.getFromDB}> Get Trends </button>*/}
                         {this.state.pulled ?
                             <Chart
