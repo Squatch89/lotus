@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {Chart} from 'react-google-charts';
 import Wrapper from '../Wrapper/Wrapper.js';
 import Container from '../Container/Container.js';
@@ -7,6 +6,7 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import './Trends.css';
 import axios from 'axios';
+import moment from "moment";
 
 // creates Trends component to render to the page
 class Trends extends Component {
@@ -60,21 +60,33 @@ class Trends extends Component {
         //date format is in YYYY - MM - DD
         
         const currentDate = new Date();
+        const currentDateMoment = moment(currentDate);
         
-        // console.log(currentDate);
-        // console.log(currentDate.getFullYear());
-        // console.log(currentDate.getMonth() + 1);
-        // console.log(currentDate.getDate());
-        console.log(currentDate.getDay());
-        console.log(`${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`);
+        console.log(currentDateMoment.week());
+        console.log(currentDateMoment.date());
+        console.log(currentDateMoment.weekday());
+        console.log(currentDateMoment.month());
+        console.log(currentDateMoment.year());
+        console.log(`${currentDateMoment.year()}-${currentDateMoment.month()}-${currentDateMoment.date()}`);
+        
+        // console.log(currentDate.getDay());
+        // console.log(`${currentDate.getFullYear()}-${currentDate.getMonth() + 1}-${currentDate.getDate()}`);
         
         axios.get(`/api/mood/trends/prevweek/${this.state.username}`)
             .then((data) => {
                 console.log(data.data);
                 data.data.forEach((ele, index) => {
-                    let date = new Date(ele.date);
-                    console.log(date.getUTCDay());
-                    console.log(`${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`);
+                    let dbDate = new Date(ele.date);
+                    let dbDateMoment = moment(dbDate);
+                    console.log(dbDateMoment.week());
+                    console.log(dbDateMoment.date());
+                    // console.log(dbDateMoment.weekday());
+                    // console.log(dbDateMoment.month());
+                    // console.log(dbDateMoment.year());
+                    console.log(`${dbDateMoment.year()}-${dbDateMoment.month()}-${dbDateMoment.date()}`);
+                    // console.log(date.week());
+                    // console.log(date.getDay());
+                    // console.log(`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`);
                 })
             })
     };
@@ -98,7 +110,7 @@ class Trends extends Component {
                         {this.state.pulled ?
                             <Chart
                                 chartType="PieChart"
-                                data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
+                                data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Bad", this.state.bad.length], ["Neutral", this.state.neutral.length]]}
                                 options={{"title": "How My Week Has Gone", "backgroundColor": "transparent"}}
                                 graph_id="PieChart"
                                 width="100%"
