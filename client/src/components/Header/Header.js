@@ -16,6 +16,10 @@ class Header extends Component {
         this.props.history.push('/');
     };
 
+    showLinks = (event) => {
+        event.preventDefault();
+    };
+
     render() {
         return (
 
@@ -26,6 +30,7 @@ class Header extends Component {
                     <div className="brand-name navbar-link">Lotus Tracker</div>
                 </Link>
                 <div className="navbar-nav">
+                    <i className="dropdown-icon navbar-link navbar-item" onClick={this.showLinks}>&#9776;</i>
                     <ul className="navbar-group">
                         <li className="navbar-item">
                             <button className="btn btn-primary " id="logoutBtn" onClick={this.signOut}>Log Out</button>
