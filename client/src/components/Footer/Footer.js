@@ -5,7 +5,9 @@ import './Footer.css';
 const Footer = () => {
     return (
         <footer className="footer">
-            Footer
+            <div className="footeritem">
+                &copy; Lotus Tracker 2018
+            </div>
         </footer>
     )
 };
