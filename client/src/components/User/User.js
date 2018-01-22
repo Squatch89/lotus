@@ -52,7 +52,7 @@ class User extends Component {
                 <Wrapper>
                     <Header/>
                     <Container>
-                        <div>
+
                             <div className="jumbotron text-center">
                                 <h1>User</h1>
                                 <hr className="hr"/>
@@ -64,7 +64,6 @@ class User extends Component {
                                 </p>
                             </div>
 
-                        </div>
                     </Container>
                     <Footer/>
                 </Wrapper>

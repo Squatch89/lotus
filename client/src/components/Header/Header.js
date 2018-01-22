@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './Header.css';
 import logo from "../Images/logo.png";
-
+import Wrapper from "../Wrapper/Wrapper.js";
 
 
 // creates Header component to render to the page
@@ -18,6 +18,7 @@ class Header extends Component {
 
     render() {
         return (
+
             <nav className="navbar">
 
                 <Link className="navbar-brand" to="/">

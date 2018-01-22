@@ -38,7 +38,7 @@ const PublicRoute = ({component: Component, ...rest}) => {
 
 const App = (props) => (
     <Router>
-    <div>
+    <div className="routerDiv">
         <PublicRoute path="/" component={Jumbotron}/>
         <PublicRoute path="/signup" component={Signup}/>
         <PublicRoute path="/signin" component={Signin}/>

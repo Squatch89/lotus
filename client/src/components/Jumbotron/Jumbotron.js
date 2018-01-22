@@ -9,7 +9,7 @@ import Container from '../Container/Container.js';
 // creates Jumbotron component to render to the  landing page
 const Jumbotron = () => {
     return (
-        
+
         <Wrapper>
             <Container>
                 <div className="jumbotron text-center">

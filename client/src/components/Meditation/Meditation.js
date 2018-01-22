@@ -72,7 +72,7 @@ class Meditation extends Component {
                 <Wrapper>
                     <Header/>
                     <Container>
-                        <div>
+
                             <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
 
                             {this.state.meditationSelected ? <audio controls ref="audio" autoPlay loop>
@@ -82,7 +82,7 @@ class Meditation extends Component {
                                 not supported
 
                             </audio> : ''}
-                        </div>
+
                     </Container>
                     <Footer/>
                 </Wrapper>
@@ -123,7 +123,6 @@ const PresentAudio = (props) => {
     }
     else if (props.meditationSelected && props.meditationType === "Audio") {
         return (
-            <div>
                 <div className="jumbotron text-center">
                     <h1>Meditation</h1>
                     <hr className="hr"/>
@@ -142,7 +141,6 @@ const PresentAudio = (props) => {
                     </p>
                 </div>
 
-            </div>
         )
     }
 };

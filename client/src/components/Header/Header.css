@@ -1,15 +1,15 @@
 .navbar {
     grid-column-start: col1;
-    grid-column-end: col11;
+    grid-column-end: col21;
     grid-row-start: row1;
-    grid-row-end: row1;
+    grid-row-end: row3;
     background-color: rgba(50, 100, 200, 0.25);
     /*height: 75px;*/
     /*width: 100%;*/
 }
 .littlelogo {
     max-width: 50px;
-    padding: 30px 10px 10px 5px;
+    /*padding: 30px 10px 10px 5px;*/
     float: left;
 }
 .navbar-brand {
@@ -23,8 +23,8 @@
 }
 .brand-name {
     float: left;
-    margin-top: 30px;
-    padding: 5px;
+    /*margin-top: 30px;*/
+    /*padding: 5px;*/
 }
 .navbar-group {
     list-style-type: none;
@@ -33,7 +33,7 @@
     /*margin-left: 70%;*/
 }
 .navbar-item {
-    padding: 20px 5px 5px 0;
+    /*padding: 20px 5px 5px 0;*/
     float: right;
 }
 .navbar-link {

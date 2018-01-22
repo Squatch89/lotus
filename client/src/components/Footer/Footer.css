@@ -1,8 +1,8 @@
 .footer {
     grid-column-start: col1;
-    grid-column-end: col11;
-    grid-row-start: row9;
-    grid-row-end: row11;
+    grid-column-end: col21;
+    grid-row-start: row19;
+    grid-row-end: row21;
     background-color: rgba(50, 100, 200, 0.25);
     text-align: center;
     color: white;
