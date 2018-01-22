@@ -116,6 +116,22 @@ apiRouter.get('/mood/trends/:username', (req, res) => {
         });
 });
 
+apiRouter.get('/mood/trends/prevweek/:username', (req, res) => {
+    console.log("received get request");
+    console.log(req.params.username);
+   
+    db.User.findOne({username: req.params.username})
+        .populate("mood")
+        .then((prevWeek) => {
+            console.log(prevWeek.mood);
+            res.send(prevWeek.mood);
+        })
+        .catch((err) => {
+            res.status(400).json({err:"Connection error"});
+        })
+       
+});
+
 apiRouter.get('/user', verifyCookie, (req, res) => {
     res.json({msg:"Happy to be here"});
 });
