@@ -52,7 +52,6 @@ class User extends Component {
                 <Wrapper>
                     <Header/>
                     <Container>
-                        <div>
                             <div className="jumbotron text-center">
                                 <h1>User</h1>
                                 <hr className="hr"/>
@@ -62,8 +61,6 @@ class User extends Component {
                                     <i id="neutral" onClick={this.checkIn} className="fa fa-meh-o fa-5x moodbtn" aria-hidden="true"/>
                                     <i id="bad" onClick={this.checkIn} className="fa fa-frown-o fa-5x moodbtn" aria-hidden="true"/>
                                 </p>
-                            </div>
-
                         </div>
                     </Container>
                     <Footer/>
