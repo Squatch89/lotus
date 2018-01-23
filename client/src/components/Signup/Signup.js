@@ -30,47 +30,90 @@ class Signup extends Component {
         })
             .catch((err) => {
                 console.log(err);
+                this.setState({signinerror: true});
             });
     };
 
     render() {
 
-        return (
-            <Wrapper>
-                <Container>
-                    <div className="jumbotron text-center">
+        if (this.state.signinerror) {
+            return (
+                <Wrapper>
+                    <Container>
+                        <div className="jumbotron text-center">
 
-                        <h1>Sign Up</h1>
-                        <hr className="hr"/>
+                            <h1>Sign Up</h1>
+                            <hr className="hr"/>
+                            <p className="error">This username is already taken.</p>
 
-                        <form>
-                            <input
-                                type="text"
-                                name="username"
-                                className="input"
-                                placeholder="username"
-                                onChange={this.getValues}/> <br/>
-
-
-                            <input
-                                type="password"
-                                name="password"
-                                className="input"
-                                placeholder="password"
-                                onChange={this.getValues}/> <br/>
-
-                            <button className="btn btn-primary" onClick={this.sendData}>Sign Up</button>
-                        </form>
+                            <form>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    className="input"
+                                    placeholder="username"
+                                    onChange={this.getValues}/> <br/>
 
 
-                        <Link to='/signin'>
-                            <button className="btn btn-primary">Go to Signin</button>
-                        </Link>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    className="input"
+                                    placeholder="password"
+                                    onChange={this.getValues}/> <br/>
 
-                    </div>
-                </Container>
-            </Wrapper>
-        );
+                                <button className="btn btn-primary" onClick={this.sendData}>Sign Up</button>
+                            </form>
+
+
+                            <Link to='/signin'>
+                                <button className="btn btn-primary">Go to Signin</button>
+                            </Link>
+
+                        </div>
+                    </Container>
+                </Wrapper>
+            );
+        } else {
+            return (
+                <Wrapper>
+                    <Container>
+                        <div className="jumbotron text-center">
+
+                            <h1>Sign Up</h1>
+                            <hr className="hr"/>
+
+                            <form>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    className="input"
+                                    placeholder="username"
+                                    onChange={this.getValues}/> <br/>
+
+
+                                <input
+                                    type="password"
+                                    name="password"
+                                    className="input"
+                                    placeholder="password"
+                                    onChange={this.getValues}/> <br/>
+
+                                <button className="btn btn-primary" onClick={this.sendData}>Sign Up</button>
+                            </form>
+
+
+                            <Link to='/signin'>
+                                <button className="btn btn-primary">Go to Signin</button>
+                            </Link>
+
+                        </div>
+                    </Container>
+                </Wrapper>
+            );
+        }
+
+
     }
 
 }
