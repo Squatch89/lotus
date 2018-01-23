@@ -21,7 +21,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
     .moodbtn {
         font-size: 350%;
         margin: 20px;
@@ -29,6 +29,19 @@
 
     .moodbtn:hover {
         font-size: 400%;
+        margin: 0;
+        padding: 0 17px 0 17px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .moodbtn {
+        font-size: 250%;
+        margin: 15px;
+    }
+
+    .moodbtn:hover {
+        font-size: 300%;
         margin: 0;
         padding: 0 17px 0 17px;
     }

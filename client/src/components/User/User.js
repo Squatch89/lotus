@@ -72,7 +72,9 @@ class User extends Component {
                 <Wrapper>
                     <Header/>
                     <Container>
+                        <div className="jumbotron text-center">
                         <MedOrTrend {...this.state}/>
+                        </div>
                     </Container>
                     <Footer/>
                 </Wrapper>
