@@ -19,7 +19,7 @@ app.use(cookieParser());
 app.use(logger("dev"));
 app.use(express.static(path.join(__dirname, 'public')));
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
+    app.use(express.static('../client/build'));
 }
 
 // commented out until mongo is set up to reduce terminal tabs required to run project in development
