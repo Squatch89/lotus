@@ -37,8 +37,9 @@ html {
 }
 
 .btn-primary {
-    background-color: rgba(0,255,150,0.5);
+    background-color: rgba(7,67,76,0.5);
     border: none;
+    font-size: 1em;
 }
 
 .btn:hover {

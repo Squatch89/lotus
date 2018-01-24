@@ -30,11 +30,11 @@ class Trends extends Component {
             pulled: false
         };
     }
-
+    
     getFromDB = () => {
-
+        
         console.log(this.state.username);
-
+        
         axios.get(`/api/mood/trends/${this.state.username}`)
             .then((data) => {
                 console.log(data.data);
@@ -55,21 +55,21 @@ class Trends extends Component {
                 console.log("There was an error.");
                 console.log(err);
             })
-
+        
         // this.setState({trends:})
     };
-
+    
     whichWeek = (e) => {
         //date format is in YYYY - MM - DD
         console.log(this.state.timeFrame);
-
+        
         //implement week functionality into month function using same principles
         if (this.state.timeFrame === "week") {
             if (e.target.id === "back") {
                 if (this.state.prevWeek > 0) {
                     this.setState({prevWeek: this.state.prevWeek - 1});
                 }
-
+                
             }
             else if (e.target.id === "forward") {
                 if (this.state.prevWeek < this.state.currentWeek) {
@@ -82,7 +82,7 @@ class Trends extends Component {
                 if (this.state.prevMonth > 0) {
                     this.setState({prevMonth: this.state.prevMonth - 1});
                 }
-
+                
             }
             else if (e.target.id === "forward") {
                 if (this.state.prevMonth < this.state.currentMonth) {
@@ -90,18 +90,22 @@ class Trends extends Component {
                 }
             }
         }
-
+        
         this.setState({good: 0, neutral: 0, bad: 0});
-
+        
         console.log(this.state.prevWeek);
+        this.getTrendsData();
+    };
+    
+    getTrendsData = () => {
         axios.get(`/api/mood/trends/prevweek/${this.state.username}`)
             .then((data) => {
                 console.log(data.data);
                 data.data.forEach((ele, index) => {
-
+                    
                     console.log(`${moment(ele.date).year()}-${moment(ele.date).month() + 1}-${moment(ele.date).date()}`);
-
-
+                    
+                    
                     //changes data displayed in graph by week
                     if (this.state.timeFrame === "week") {
                         if (ele.mood === "good" && moment(ele.date).week() === this.state.prevWeek) {
@@ -129,53 +133,58 @@ class Trends extends Component {
                 })
             })
     };
-
+    
     weekOrMonth = (e) => {
         const whichTrend = e.target.id;
         console.log(whichTrend);
-
+        
         if (whichTrend === "week") {
-            this.setState({timeFrame: "week"})
+            this.setState({timeFrame: "week"});
+            this.getTrendsData();
         }
         else if (whichTrend === "month") {
-            this.setState({timeFrame: "month"})
+            this.setState({timeFrame: "month"});
+            this.getTrendsData();
         }
-
+        
     };
-
-
+    
     componentWillMount() {
         this.getFromDB();
     }
-
+    
     componentDidMount() {
         this.setState({pulled: true});
     }
-
+    
     render() {
         return (
             <Wrapper>
                 <Header/>
                 <Container>
-                    <div className="jumbotron">
-                        <div className="chart">
-                            <button className="btn btn-primary" id="back" onClick={this.whichWeek}>Go Back a Week/Month</button>
-                            <button className="btn btn-primary" id="week" onClick={this.weekOrMonth}>Weekly Trends</button>
-                            <button className="btn btn-primary" id="month" onClick={this.weekOrMonth}>Monthly Trends</button>
-                            <button className="btn btn-primary" id="forward" onClick={this.whichWeek}>Go Forward a Week/Month</button>
-                            {/*<button onClick={this.getFromDB}> Get Trends </button>*/}
-                            {this.state.pulled ?
-                                <Chart
-                                    chartType="PieChart"
-                                    data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Bad", this.state.bad.length], ["Neutral", this.state.neutral.length]]}
-                                    options={{"title": "How My Week Has Gone", "backgroundColor": "transparent"}}
-                                    graph_id="PieChart"
-                                    width="100%"
-                                    height="400px"
-                                    legend_toggle
-                                    className="chartBg"
-                                /> : null}
-                        </div>
+                    <div className="text-center">
+                    <button className="btn btn-primary" id="back" onClick={this.whichWeek}>Go Back
+                        a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>
+                    <button className="btn btn-primary" id="week" onClick={this.weekOrMonth}>Weekly Trends</button>
+                    <button className="btn btn-primary" id="month" onClick={this.weekOrMonth}>Monthly Trends</button>
+                    <button className="btn btn-primary" id="forward" onClick={this.whichWeek}>Go Forward
+                        a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>
+                    </div>
+                    <div className="chart">
+                        <Chart
+                            chartType="PieChart"
+                            data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
+                            options={{
+                                "backgroundColor": "transparent",
+                                "colors": ['#14B2CC', '#3D8C99', '#063840'],
+                                "legend": {"position": 'bottom'}
+                            }}
+                            graph_id="PieChart"
+                            width="100%"
+                            height="400px"
+                            legend_toggle
+                            className="chartBg"
+                        />
                     </div>
                 </Container>
                 <Footer/>
@@ -186,3 +195,5 @@ class Trends extends Component {
 
 // exports Trends for external use
 export default Trends;
+
+

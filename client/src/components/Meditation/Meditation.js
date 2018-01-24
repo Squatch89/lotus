@@ -72,7 +72,6 @@ class Meditation extends Component {
                 <Wrapper>
                     <Header/>
                     <Container>
-
                             <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
 
                             {this.state.meditationSelected ? <audio controls ref="audio" autoPlay loop>
@@ -82,7 +81,6 @@ class Meditation extends Component {
                                 not supported
 
                             </audio> : ''}
-
                     </Container>
                     <Footer/>
                 </Wrapper>
