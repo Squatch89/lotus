@@ -13,14 +13,22 @@ const cookieParser = require('cookie-parser');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+
+
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(logger("dev"));
-app.use(express.static(path.join(__dirname, 'public')));
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('../client/build'));
-}
+
+app.use('/api', apiRoutes);
+
+app.use('/*', function(req, res) {
+    res.sendFile('client/build/index.html');
+});
+
+app.use(express.static('client/build'));
+
 
 // commented out until mongo is set up to reduce terminal tabs required to run project in development
 mongoose.Promise = Promise;
@@ -35,7 +43,6 @@ else {
 }
 
 app.use('/', htmlRoutes);
-app.use('/api', apiRoutes);
 
 
 app.listen(PORT, function() {
