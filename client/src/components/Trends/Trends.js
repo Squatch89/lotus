@@ -176,7 +176,8 @@ class Trends extends Component {
                             data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
                             options={{
                                 "backgroundColor": "transparent",
-                                "colors": ['#14B2CC', '#3D8C99', '#063840']
+                                "colors": ['#14B2CC', '#3D8C99', '#063840'],
+                                "legend": {"position": 'bottom'}
                             }}
                             graph_id="PieChart"
                             width="100%"
