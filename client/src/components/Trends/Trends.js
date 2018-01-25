@@ -26,8 +26,11 @@ class Trends extends Component {
             currentMonth: currentDateMoment.month() + 1,
             prevWeek: currentDateMoment.week(),
             prevMonth: currentDateMoment.month(),
+            startOfWeek: "",
+            endOfWeek: "",
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
             username: JSON.parse(sessionStorage.getItem('UN')),
-            pulled: false
+            pulled: false,
         };
     }
     
@@ -39,6 +42,9 @@ class Trends extends Component {
             .then((data) => {
                 console.log(data.data);
                 data.data.forEach((ele, index) => {
+                    
+                    this.setDate(ele.date);
+                    
                     // console.log(ele.mood);
                     if (ele.mood === "good" && moment(ele.date).week() === this.state.currentWeek) {
                         this.setState({good: [...this.state.good, ele.mood]})
@@ -108,25 +114,31 @@ class Trends extends Component {
                     //changes data displayed in graph by week
                     if (this.state.timeFrame === "week") {
                         if (ele.mood === "good" && moment(ele.date).week() === this.state.prevWeek) {
-                            this.setState({good: [...this.state.good, ele.mood]})
+                            this.setState({good: [...this.state.good, ele.mood]});
+                            this.setDate(ele.date);
                         }
                         else if (ele.mood === "neutral" && moment(ele.date).week() === this.state.prevWeek) {
-                            this.setState({neutral: [...this.state.neutral, ele.mood]})
+                            this.setState({neutral: [...this.state.neutral, ele.mood]});
+                            this.setDate(ele.date);
                         }
                         else if (ele.mood === "bad" && moment(ele.date).week() === this.state.prevWeek) {
-                            this.setState({bad: [...this.state.bad, ele.mood]})
+                            this.setState({bad: [...this.state.bad, ele.mood]});
+                            this.setDate(ele.date);
                         }
                     }
                     //changes data displayed in graph by month
                     else if (this.state.timeFrame === "month") {
                         if (ele.mood === "good" && moment(ele.date).month() === this.state.prevMonth) {
-                            this.setState({good: [...this.state.good, ele.mood]})
+                            this.setState({good: [...this.state.good, ele.mood]});
+                            this.setDate(ele.date);
                         }
                         else if (ele.mood === "neutral" && moment(ele.date).month() === this.state.prevMonth) {
-                            this.setState({neutral: [...this.state.neutral, ele.mood]})
+                            this.setState({neutral: [...this.state.neutral, ele.mood]});
+                            this.setDate(ele.date);
                         }
                         else if (ele.mood === "bad" && moment(ele.date).month() === this.state.prevMonth) {
-                            this.setState({bad: [...this.state.bad, ele.mood]})
+                            this.setState({bad: [...this.state.bad, ele.mood]});
+                            this.setDate(ele.date);
                         }
                     }
                 })
@@ -148,6 +160,15 @@ class Trends extends Component {
         
     };
     
+    setDate = (date) => {
+        
+        console.log(`This is ${date}`);
+        const startOfWeek = moment(date).startOf("week")._d;
+        const endOfWeek = moment(date).endOf("week")._d;
+    
+        this.setState({startOfWeek: `${moment(startOfWeek).year()}-${moment(startOfWeek).month() + 1}-${moment(startOfWeek).date()}`, endOfWeek: `${moment(endOfWeek).year()}-${moment(endOfWeek).month() + 1}-${moment(endOfWeek).date()}` });
+    };
+    
     componentWillMount() {
         this.getFromDB();
     }
@@ -161,6 +182,7 @@ class Trends extends Component {
             <Wrapper>
                 <Header/>
                 <Container>
+                    
                     <div className="text-center">
                     <button className="btn btn-primary" id="back" onClick={this.whichWeek}>Go Back
                         a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>
@@ -169,6 +191,14 @@ class Trends extends Component {
                     <button className="btn btn-primary" id="forward" onClick={this.whichWeek}>Go Forward
                         a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>
                     </div>
+                    
+                    {/*displays the current date for the data that was pulled*/}
+                    {(this.state.timeFrame === "week")?
+                        <div>The week of {this.state.startOfWeek} to {this.state.endOfWeek}</div>
+                    :
+                        <div>The {this.state.months[this.state.prevMonth]} month of the year </div>
+                    }
+                    
                     <div className="chart">
                         {(this.state.good.length === undefined && this.state.bad.length === undefined && this.state.neutral.length === undefined) ?
                             <div>
@@ -184,7 +214,7 @@ class Trends extends Component {
                             }}
                             graph_id="PieChart"
                             width="100%"
-                            height="400px"
+                            height="100%"
                             legend_toggle
                             className="chartBg"
                         />}
