@@ -194,7 +194,7 @@ class Trends extends Component {
                     
                     {/*displays the current date for the data that was pulled*/}
                     {(this.state.timeFrame === "week")?
-                        <div>The week of {this.state.startOfWeek} to {this.state.endOfWeek}</div>
+                        <div>The week of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</div>
                     :
                         <div>The {this.state.months[this.state.prevMonth]} month of the year </div>
                     }
