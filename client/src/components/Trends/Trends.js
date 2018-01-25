@@ -24,6 +24,7 @@ class Trends extends Component {
             currentWeek: currentDateMoment.week(),
             //set currentMonth to current month number using moment
             currentMonth: currentDateMoment.month() + 1,
+            currentYear: currentDateMoment.year(),
             prevWeek: currentDateMoment.week(),
             prevMonth: currentDateMoment.month(),
             startOfWeek: "",
@@ -194,9 +195,9 @@ class Trends extends Component {
                     
                     {/*displays the current date for the data that was pulled*/}
                     {(this.state.timeFrame === "week")?
-                        <div>The week of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</div>
+                        <div>Trends for the week of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</div>
                     :
-                        <div>The {this.state.months[this.state.prevMonth]} month of the year </div>
+                        <div>Trends for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </div>
                     }
                     
                     <div className="chart">
