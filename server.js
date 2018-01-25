@@ -11,10 +11,6 @@ const htmlRoutes = require('./routes/htmlRoutes');
 const cookieParser = require('cookie-parser');
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-
-
-
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -45,8 +41,6 @@ else {
 app.use('/', htmlRoutes);
 
 
-app.listen(process.env.PORT || 3000, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-});
+app.listen(process.env.PORT || 3001);
 
 module.exports = app;
