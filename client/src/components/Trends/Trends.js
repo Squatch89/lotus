@@ -195,14 +195,16 @@ class Trends extends Component {
                     
                     {/*displays the current date for the data that was pulled*/}
                     {(this.state.timeFrame === "week")?
-                        <div>Trends for the week of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</div>
+                        <div className="text-center">Trends for the week of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</div>
                     :
-                        <div>Trends for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </div>
+                        <div className="text-center">Trends for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </div>
                     }
                     
+                    
+                    {console.log(this.state.good)}
                     <div className="chart">
                         {(this.state.good.length === undefined && this.state.bad.length === undefined && this.state.neutral.length === undefined) ?
-                            <div>
+                            <div className="text-center">
                                 <p>Sorry There is no data to display</p>
                             </div> :
                         <Chart
@@ -211,7 +213,7 @@ class Trends extends Component {
                             options={{
                                 "backgroundColor": "transparent",
                                 "colors": ['#14B2CC', '#3D8C99', '#063840'],
-                                "legend": {"position": 'bottom'}
+                                "legend": {"position": "bottom"}
                             }}
                             graph_id="PieChart"
                             width="100%"
