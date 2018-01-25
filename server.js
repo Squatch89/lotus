@@ -5,7 +5,6 @@ const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
 const logger = require("morgan");
 const db = require("./models");
-const axios = require('axios');
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
 const cookieParser = require('cookie-parser');
