@@ -27,7 +27,7 @@ app.use('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
-app.use(express.static('client/build'));
+app.use(express.static('client/build/static'));
 
 
 // commented out until mongo is set up to reduce terminal tabs required to run project in development
