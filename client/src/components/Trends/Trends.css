@@ -3,16 +3,45 @@ button {
     z-index: 1;
 }
 
-.chart {
-    width: 100%;
-    height: 100%;
-}
-
 svg {
     width: 100%;
     height: 100%;
     margin-top: -15%;
 }
+
+.arrow {
+    margin-top: .5%;
+    position: relative;
+    z-index: 1;
+    font-size: 32px;
+}
+
+.arrow:hover {
+    color: white;
+}
+
+.chart {
+    width: 100%;
+    height: 100%;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+/*#back {*/
+    /*align-items: left;*/
+/*}*/
+
+/*#week, #month {*/
+    /*align-items: center;*/
+/*}*/
+
+
+/*#forward {*/
+    /*align-items: right;*/
+/*}*/
 
 @media screen and (min-width: 1000px) {
     svg {
@@ -29,6 +58,10 @@ svg {
 @media screen and (max-width: 500px) {
     svg {
         margin-top: -60%;
+    }
+    
+    .arrow {
+        margin-top: 8%;
     }
 }
 

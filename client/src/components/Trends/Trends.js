@@ -98,8 +98,6 @@ class Trends extends Component {
             }
         }
         
-        this.setState({good: 0, neutral: 0, bad: 0});
-        
         console.log(this.state.prevWeek);
         this.getTrendsData();
     };
@@ -108,6 +106,7 @@ class Trends extends Component {
         axios.get(`/api/mood/trends/prevweek/${this.state.username}`)
             .then((data) => {
                 console.log(data.data);
+                this.setState({good: 0, neutral: 0, bad: 0});
                 data.data.forEach((ele, index) => {
                     
                     console.log(`${moment(ele.date).year()}-${moment(ele.date).month() + 1}-${moment(ele.date).date()}`);
@@ -184,13 +183,17 @@ class Trends extends Component {
                 <Header/>
                 <Container>
                     
-                    <div className="text-center">
-                    <button className="btn btn-primary" id="back" onClick={this.whichWeek}>Go Back
-                        a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>
+                    <div className=" btn-container text-center">
+                    {/*<button className="btn btn-primary" id="back" onClick={this.whichWeek}>Go Back*/}
+                        {/*a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>*/}
+                        <i className="fa fa-arrow-left arrow" id="back" onClick={this.whichWeek}/>
+                        <span id="center-btn">
                     <button className="btn btn-primary" id="week" onClick={this.weekOrMonth}>Weekly Trends</button>
                     <button className="btn btn-primary" id="month" onClick={this.weekOrMonth}>Monthly Trends</button>
-                    <button className="btn btn-primary" id="forward" onClick={this.whichWeek}>Go Forward
-                        a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>
+                        </span>
+                    {/*<button className="btn btn-primary" id="forward" onClick={this.whichWeek}>Go Forward*/}
+                        {/*a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>*/}
+                        <i className="fa fa-arrow-right arrow" id="forward" onClick={this.whichWeek}/>
                     </div>
                     
                     {/*displays the current date for the data that was pulled*/}
@@ -200,10 +203,9 @@ class Trends extends Component {
                         <div className="text-center">Trends for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </div>
                     }
                     
-                    
-                    {console.log(this.state.good)}
+                    {/*{console.log(`What is the state of Good? ${this.state.good}`)}*/}
                     <div className="chart">
-                        {(this.state.good.length === undefined && this.state.bad.length === undefined && this.state.neutral.length === undefined) ?
+                        {(this.state.good === 0 && this.state.bad === 0 && this.state.neutral    === 0) ?
                             <div className="text-center">
                                 <p>Sorry There is no data to display</p>
                             </div> :
