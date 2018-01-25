@@ -105,7 +105,6 @@ class Trends extends Component {
                     
                     console.log(`${moment(ele.date).year()}-${moment(ele.date).month() + 1}-${moment(ele.date).date()}`);
                     
-                    
                     //changes data displayed in graph by week
                     if (this.state.timeFrame === "week") {
                         if (ele.mood === "good" && moment(ele.date).week() === this.state.prevWeek) {
@@ -171,6 +170,10 @@ class Trends extends Component {
                         a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>
                     </div>
                     <div className="chart">
+                        {(this.state.good.length === undefined && this.state.bad.length === undefined && this.state.neutral.length === undefined) ?
+                            <div>
+                                <p>Sorry There is no data to display</p>
+                            </div> :
                         <Chart
                             chartType="PieChart"
                             data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
@@ -184,7 +187,7 @@ class Trends extends Component {
                             height="400px"
                             legend_toggle
                             className="chartBg"
-                        />
+                        />}
                     </div>
                 </Container>
                 <Footer/>
