@@ -1,4 +1,4 @@
-import React, {Component} from 'react'; 
+import React, {Component} from 'react';
 import Button from '../Button/Button.js';
 import Wrapper from '../Wrapper/Wrapper.js';
 import Container from '../Container/Container.js';
