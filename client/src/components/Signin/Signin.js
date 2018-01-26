@@ -85,6 +85,7 @@ class Signin extends Component {
 
                             <h1>Sign In</h1>
                             <hr className="hr"/>
+                            <br/>
 
                             <form>
                                 <input

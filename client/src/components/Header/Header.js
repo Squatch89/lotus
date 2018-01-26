@@ -6,6 +6,13 @@ import logo from "../Images/logo.png";
 // creates Header component to render to the page
 class Header extends Component {
 
+    constructor() {
+        super();
+        this.state = {
+            show: false
+        };
+    }
+
     // Signout function
     signOut = (event) => {
         event.preventDefault();
@@ -16,6 +23,11 @@ class Header extends Component {
 
     showLinks = (event) => {
         event.preventDefault();
+        if (!this.state.show) {
+            this.setState({show: true});
+        } else {
+            this.setState({show: false});
+        }
     };
 
     render() {
@@ -28,7 +40,16 @@ class Header extends Component {
                     <div className="brand-name navbar-link">Lotus Tracker</div>
                 </span>
                 <div className="navbar-nav">
-                    <i className="dropdown-icon navbar-link navbar-item" onClick={this.showLinks}>&#9776;</i>
+                    <div className="dropdown-icon navbar-link" onClick={this.showLinks}>&#9776;
+                        <div className="dropdown-content" style={{display: (this.state.show) ? 'inline-block' : 'none'}}>
+                            <Link to="/user" className="navbar-link navbar-item">User</Link>
+                            <Link to="/trends" className="navbar-link navbar-item">Trends</Link>
+                            <Link to="/meditation" className="navbar-link navbar-item">Meditation</Link>
+                            <button className="btn btn-primary " id="logoutBtn" onClick={this.signOut}>Log Out</button>
+                        </div>
+                    </div>
+
+
                     <ul className="navbar-group">
                         <li className="navbar-item">
                             <button className="btn btn-primary " id="logoutBtn" onClick={this.signOut}>Log Out</button>
