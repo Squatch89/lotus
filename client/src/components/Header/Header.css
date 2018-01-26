@@ -4,7 +4,7 @@
     grid-column-end: col21;
     grid-row-start: row1;
     grid-row-end: row2;
-    background-color: rgba(50, 100, 200, 0.25);
+    background-color: #143A52;
     /*height: 75px;*/
     /*width: 100%;*/
     grid-template-columns: [headercol1] 1fr [headercol2] 1fr [headercol3] 1fr [headercol4] 1fr [headercol5] 1fr [headercol6] 1fr [headercol7] 1fr [headercol8] 1fr [headercol9] 1fr [headercol10] 1fr [headercol11];
@@ -68,6 +68,8 @@
 #logoutBtn {
     margin-top: -25%;
     padding: 8px;
+    background-color: #CDE3EB;
+    color: #143A52;
 }
 
 @media screen and (min-width: 701px) {

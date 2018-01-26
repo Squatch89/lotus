@@ -26,6 +26,11 @@
     justify-content: space-evenly;
 }
 
+.btn-button {
+    background-color: #CDE3EB;
+    color: #143A52;
+}
+
 @media screen and (max-width: 700px) {
     .moodbtn {
         font-size: 350%;
