@@ -14,7 +14,7 @@ class User extends Component {
         super();
         this.state = {
             checkedIn: false,
-            username:  JSON.parse(sessionStorage.getItem('UN'))
+            username: JSON.parse(sessionStorage.getItem('UN'))
         };
     }
     
@@ -28,17 +28,12 @@ class User extends Component {
                 console.log("There was an error.");
                 console.log(err);
             })
-        //this needs to send data to the db connected with the logged in user
-        //it should probably return something letting us know that it was successful
-        
-        //will limit to one check in per day on DB side of things
-        //should update user if they come back to user page that they have already checked in
     };
     
     checkIn = (id) => {
         const mood = id.target.id;
         console.log(this.state.username);
-        console.log("ID:",mood);
+        console.log("ID:", mood);
         this.setState({checkedIn: true});
         
         this.sendToDB(mood, this.state.username);
@@ -52,15 +47,18 @@ class User extends Component {
                 <Wrapper>
                     <Header/>
                     <Container>
-                            <div className="jumbotron text-center">
-                                <h1>User</h1>
-                                <hr className="hr"/>
-                                <p>Tell us how you're feeling right now.</p>
-                                <p className="lead">
-                                    <i id="good" onClick={this.checkIn} className="fa fa-smile-o fa-5x moodbtn" aria-hidden="true"/>
-                                    <i id="neutral" onClick={this.checkIn} className="fa fa-meh-o fa-5x moodbtn" aria-hidden="true"/>
-                                    <i id="bad" onClick={this.checkIn} className="fa fa-frown-o fa-5x moodbtn" aria-hidden="true"/>
-                                </p>
+                        <div className="jumbotron text-center">
+                            <h1>User</h1>
+                            <hr className="hr"/>
+                            <p>Tell us how you're feeling right now.</p>
+                            <p className="lead">
+                                <i id="good" onClick={this.checkIn} className="fa fa-smile-o fa-5x moodbtn"
+                                   aria-hidden="true"/>
+                                <i id="neutral" onClick={this.checkIn} className="fa fa-meh-o fa-5x moodbtn"
+                                   aria-hidden="true"/>
+                                <i id="bad" onClick={this.checkIn} className="fa fa-frown-o fa-5x moodbtn"
+                                   aria-hidden="true"/>
+                            </p>
                         </div>
                     </Container>
                     <Footer/>
@@ -73,7 +71,7 @@ class User extends Component {
                     <Header/>
                     <Container>
                         <div className="jumbotron text-center">
-                        <MedOrTrend {...this.state}/>
+                            <MedOrTrend {...this.state}/>
                         </div>
                     </Container>
                     <Footer/>
@@ -86,14 +84,16 @@ class User extends Component {
 const MedOrTrend = (props) => {
     if (props.checkedIn) {
         return (
-            <div className="container">
-                <Link to="/trends">
-                    <button className="btn btn-primary btn-lg">Check Your Trends</button>
-                </Link>
-                <span>What would you like to do next</span>
-                <Link to="/meditation">
-                    <button className="btn btn-primary btn-lg">Do Some Meditation</button>
-                </Link>
+            <div className="medOrTrend">
+                <div className="choice-txt">What would you like to do next?</div>
+                <div className="btn-choices">
+                    <Link to="/trends">
+                        <button className="btn btn-primary btn-lg">Check Your Trends</button>
+                    </Link>
+                    <Link to="/meditation">
+                        <button className="btn btn-primary btn-lg">Do Some Meditation</button>
+                    </Link>
+                </div>
             </div>
         )
     }

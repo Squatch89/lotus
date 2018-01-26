@@ -21,6 +21,11 @@
     cursor: pointer;
 }
 
+.btn-choices {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 @media screen and (max-width: 700px) {
     .moodbtn {
         font-size: 350%;

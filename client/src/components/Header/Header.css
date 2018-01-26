@@ -23,6 +23,7 @@
     grid-row-start: headerrow1;
     grid-row-end: headerrow3;
     padding: 5px;
+    width: 30%;
 }
 .brand-name {
     float: left;
@@ -53,9 +54,7 @@
 .navbar-item:hover .navbar-link {
     background-color: rgba(255, 255, 255, 0.5);
 }
-.navbar-brand:hover .brand-name {
-    background-color: rgba(255, 255, 255, 0.5);
-}
+
 .dropdown-icon {
     font-style: normal;
     font-size: 150%;
@@ -68,6 +67,7 @@
 
 #logoutBtn {
     margin-top: -25%;
+    padding: 8px;
 }
 
 @media screen and (min-width: 701px) {

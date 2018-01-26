@@ -9,6 +9,11 @@ svg {
     margin-top: -15%;
 }
 
+.trendsText {
+    color: #0E7A8C;
+    font-weight: 900;
+}
+
 .arrow {
     margin-top: .5%;
     position: relative;
@@ -25,23 +30,16 @@ svg {
     height: 100%;
 }
 
+.choice-txt {
+    font-weight: 900;
+    font-size: 1.5em;
+    padding-bottom: 1%;
+}
+
 .btn-container {
     display: flex;
     justify-content: space-around;
 }
-
-/*#back {*/
-    /*align-items: left;*/
-/*}*/
-
-/*#week, #month {*/
-    /*align-items: center;*/
-/*}*/
-
-
-/*#forward {*/
-    /*align-items: right;*/
-/*}*/
 
 @media screen and (min-width: 1000px) {
     svg {

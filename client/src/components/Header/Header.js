@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import './Header.css';
 import logo from "../Images/logo.png";
-import Wrapper from "../Wrapper/Wrapper.js";
-
 
 // creates Header component to render to the page
 class Header extends Component {
@@ -25,10 +23,10 @@ class Header extends Component {
 
             <nav className="navbar">
 
-                <Link className="navbar-brand" to="/">
+                <span className="navbar-brand">
                     <img src={logo} alt="lotus logo" className="littlelogo"/>
                     <div className="brand-name navbar-link">Lotus Tracker</div>
-                </Link>
+                </span>
                 <div className="navbar-nav">
                     <i className="dropdown-icon navbar-link navbar-item" onClick={this.showLinks}>&#9776;</i>
                     <ul className="navbar-group">

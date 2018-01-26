@@ -10,10 +10,6 @@ audio {
     flex-direction: column;
 }
 
-.circleText {
-    /*align-self: flex-start;*/
-}
-
 .circle {
     background: #fafcf7;
     width: 200px;
@@ -36,22 +32,3 @@ audio {
         -webkit-transform: scale( 0.01 );-moz-transform: scale( 0.01 );-o-transform: scale( 0.01 );-ms-transform: scale( 0.01 );transform: scale( 0.01 );
     }
 }
-
-
-/*.circle {*/
-    /*background: red;*/
-    /*animation: circle 10s infinite;*/
-    /*border-radius: 50%;*/
-    /*width: 500px; height: 500px;*/
-/*}*/
-/*@keyframes circle {*/
-    /*0% {*/
-        /*transform: scale(0);*/
-    /*}*/
-    /*50% {*/
-        /*transform: scale(1);*/
-    /*}*/
-    /*100% {*/
-        /*transform: scale(0);*/
-    /*}*/
-/*}*/

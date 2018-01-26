@@ -161,12 +161,13 @@ class Trends extends Component {
     };
     
     setDate = (date) => {
-        
-        console.log(`This is ${date}`);
         const startOfWeek = moment(date).startOf("week")._d;
         const endOfWeek = moment(date).endOf("week")._d;
-    
-        this.setState({startOfWeek: `${moment(startOfWeek).year()}-${moment(startOfWeek).month() + 1}-${moment(startOfWeek).date()}`, endOfWeek: `${moment(endOfWeek).year()}-${moment(endOfWeek).month() + 1}-${moment(endOfWeek).date()}` });
+        
+        this.setState({
+            startOfWeek: `${moment(startOfWeek).year()}-${moment(startOfWeek).month() + 1}-${moment(startOfWeek).date()}`,
+            endOfWeek: `${moment(endOfWeek).year()}-${moment(endOfWeek).month() + 1}-${moment(endOfWeek).date()}`
+        });
     };
     
     componentWillMount() {
@@ -184,45 +185,48 @@ class Trends extends Component {
                 <Container>
                     
                     <div className=" btn-container text-center">
-                    {/*<button className="btn btn-primary" id="back" onClick={this.whichWeek}>Go Back*/}
-                        {/*a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>*/}
                         <i className="fa fa-arrow-left arrow" id="back" onClick={this.whichWeek}/>
                         <span id="center-btn">
-                    <button className="btn btn-primary" id="week" onClick={this.weekOrMonth}>Weekly Trends</button>
-                    <button className="btn btn-primary" id="month" onClick={this.weekOrMonth}>Monthly Trends</button>
+                             <button className="btn btn-primary" id="week"
+                                     onClick={this.weekOrMonth}>Weekly Trends</button>
+                             <button className="btn btn-primary" id="month"
+                                     onClick={this.weekOrMonth}>Monthly Trends</button>
                         </span>
-                    {/*<button className="btn btn-primary" id="forward" onClick={this.whichWeek}>Go Forward*/}
-                        {/*a {(this.state.timeFrame === "week") ? "Week" : "Month"}</button>*/}
                         <i className="fa fa-arrow-right arrow" id="forward" onClick={this.whichWeek}/>
                     </div>
                     
                     {/*displays the current date for the data that was pulled*/}
-                    {(this.state.timeFrame === "week")?
-                        <div className="text-center">Trends for the week of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</div>
-                    :
-                        <div className="text-center">Trends for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </div>
+                    {(this.state.timeFrame === "week") ?
+                        <div className="text-center">
+                            <p className="trendsText">Trends for the week
+                                of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</p>
+                        </div>
+                        :
+                        <div className="text-center">
+                            <p>Trends for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </p>
+                        </div>
                     }
                     
                     {/*{console.log(`What is the state of Good? ${this.state.good}`)}*/}
                     <div className="chart">
-                        {(this.state.good === 0 && this.state.bad === 0 && this.state.neutral    === 0) ?
+                        {(this.state.good === 0 && this.state.bad === 0 && this.state.neutral === 0) ?
                             <div className="text-center">
-                                <p>Sorry There is no data to display</p>
+                                <p className="trendsText">Sorry There is no data to display</p>
                             </div> :
-                        <Chart
-                            chartType="PieChart"
-                            data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
-                            options={{
-                                "backgroundColor": "transparent",
-                                "colors": ['#14B2CC', '#3D8C99', '#063840'],
-                                "legend": {"position": "bottom"}
-                            }}
-                            graph_id="PieChart"
-                            width="100%"
-                            height="100%"
-                            legend_toggle
-                            className="chartBg"
-                        />}
+                            <Chart
+                                chartType="PieChart"
+                                data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
+                                options={{
+                                    "backgroundColor": "transparent",
+                                    "colors": ['#14B2CC', '#3D8C99', '#063840'],
+                                    "legend": {"position": "bottom"}
+                                }}
+                                graph_id="PieChart"
+                                width="100%"
+                                height="100%"
+                                legend_toggle
+                                className="chartBg"
+                            />}
                     </div>
                 </Container>
                 <Footer/>
