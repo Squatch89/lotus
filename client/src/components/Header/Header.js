@@ -18,7 +18,8 @@ class Header extends Component {
         event.preventDefault();
         sessionStorage.removeItem('isAuthenticated');
         sessionStorage.removeItem('UN');
-        this.props.history.push('/');
+        // this.props.history.push('/');
+        window.location.reload();
     };
 
     showLinks = (event) => {
