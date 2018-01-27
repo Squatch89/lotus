@@ -27,6 +27,7 @@ class Trends extends Component {
             currentYear: currentDateMoment.year(),
             prevWeek: currentDateMoment.week(),
             prevMonth: currentDateMoment.month(),
+            prevYear: currentDateMoment.year(),
             startOfWeek: "",
             endOfWeek: "",
             months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -89,7 +90,6 @@ class Trends extends Component {
                 if (this.state.prevMonth > 0) {
                     this.setState({prevMonth: this.state.prevMonth - 1});
                 }
-                
             }
             else if (e.target.id === "forward") {
                 if (this.state.prevMonth < this.state.currentMonth) {
@@ -196,15 +196,17 @@ class Trends extends Component {
                         </div>
                         
                         {/*displays the current date for the data that was pulled*/}
-                        {(this.state.timeFrame === "week") ?
-                            <div className="text-center">
-                                <p className="trendsText">Trends for the week
-                                    of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</p>
-                            </div>
-                            :
-                            <div className="text-center">
-                                <p>Trends for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </p>
-                            </div>
+                        {(this.state.good === 0 && this.state.bad === 0 && this.state.neutral === 0) ? null :
+                            (this.state.timeFrame === "week") ?
+                                <div className="text-center">
+                                    <p className="trendsText">Trends for the week
+                                        of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</p>
+                                </div>
+                                :
+                                <div className="text-center">
+                                    <p>Trends
+                                        for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </p>
+                                </div>
                         }
                         
                         {/*{console.log(`What is the state of Good? ${this.state.good}`)}*/}
@@ -219,7 +221,7 @@ class Trends extends Component {
                                     options={{
                                         "backgroundColor": "transparent",
                                         "colors": ['#88D3EE', '#3E5F6B', '#5E686B'],
-                                        "legend": {"position": "bottom", "textStyle": {"color": "#E3EFF3"} },
+                                        "legend": {"position": "bottom", "textStyle": {"color": "#E3EFF3"}},
                                         "is3D": "true",
                                         "tooltip": {"textStyle": {"color": '#000000'}, "showColorCode": "true"}
                                     }}
