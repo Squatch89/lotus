@@ -16,8 +16,8 @@
 
 .moodbtn:hover {
     font-size: 700%;
-    margin: 0;
-    padding: 0 16px 0 16px;
+    margin: -10.5px;
+    padding: 0 24px 0 24px;
     cursor: pointer;
 }
 
