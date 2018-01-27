@@ -136,7 +136,7 @@ const PresentAudio = (props) => {
                 <h1>Meditation</h1>
                 <hr className="hr"/>
                 <p>Choose a relaxing soundscape.</p>
-                <p className="lead">
+                <div className="btn-space">
                     {
                         props.audio.map((audio, index) => (
                             <Button
@@ -147,7 +147,7 @@ const PresentAudio = (props) => {
                             />
                         ))
                     }
-                </p>
+                </div>
             </div>
         
         )
@@ -183,7 +183,9 @@ const BreathCircle = (props) => {
                         expands, and fully release as
                         the circle contracts
                         <div>
-                            <button onClick={() => props.clickStart("start")} id="start" className="btn btn-primary btn-button">Start</button>
+                            <button onClick={() => props.clickStart("start")} id="start"
+                                    className="btn btn-primary btn-button">Start
+                            </button>
                         </div>
                     </div>
                     :
