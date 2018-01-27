@@ -40,8 +40,8 @@ html {
 }
 
 .btn:hover {
-    background-color: #0496a2;
-    color: #CDE3EB;
+    background-color: #81a4db;
+    /*color: #CDE3EB;*/
 }
 
 .btn-button {
