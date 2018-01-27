@@ -8,8 +8,6 @@ import './Meditation.css';
 import ForestOne from './Audio/Forest-1.wav';
 import ForestTwo from './Audio/Forest-2.wav';
 import OceanWaves from './Audio/Ocean-1.wav';
-import WhiteNoise from './Audio/White-Noise.wav';
-import PinkNoise from './Audio/Pink-Noise.wav';
 
 // creates Meditation component to render to the page
 class Meditation extends Component {
@@ -20,9 +18,10 @@ class Meditation extends Component {
             meditationChoices: ["Breath", "Audio"],
             meditationType: '',
             meditationSelected: false,
-            audio: ["Day Time Forest", "Night Time Forest", "Ocean Waves", "White Noise", "Pink Noise"],
-            audioFiles: [ForestOne, ForestTwo, OceanWaves, WhiteNoise, PinkNoise],
-            chosenAudio: ''
+            audio: ["Day Time Forest", "Night Time Forest", "Ocean Waves"],
+            audioFiles: [ForestOne, ForestTwo, OceanWaves],
+            chosenAudio: '',
+            breathStart: false
         };
     }
     
@@ -41,6 +40,12 @@ class Meditation extends Component {
         this.setState({chosenAudio: audioName[id], meditationSelected: true});
     };
     
+    
+    startBreath = (id) => {
+        if (id === "start") {
+            this.setState({breathStart: true});
+        }
+    };
     
     clickHandler = (id, name) => {
         console.log("ID: ", id);
@@ -71,15 +76,15 @@ class Meditation extends Component {
                 <Wrapper>
                     <Header/>
                     <Container>
-                            <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
-
-                            {this.state.meditationSelected ? <audio controls ref="audio" autoPlay loop>
-
-                                <source src={this.state.chosenAudio} type="audio/wav" />
-
-                                not supported
-
-                            </audio> : ''}
+                        <PresentAudio {...this.state} clickHandler={this.clickHandler}/>
+                        
+                        {this.state.meditationSelected ? <audio controls ref="audio" autoPlay loop>
+                            
+                            <source src={this.state.chosenAudio} type="audio/wav"/>
+                            
+                            not supported
+                        
+                        </audio> : ''}
                     </Container>
                     <Footer/>
                 </Wrapper>
@@ -93,7 +98,8 @@ class Meditation extends Component {
                         <div className="jumbotron">
                             <h1>Meditation</h1>
                             <hr className="hr"/>
-                        <BreathCircle {...this.state} clickHandler={this.clickHandler}/>
+                            <BreathCircle {...this.state} clickStart={this.startBreath}
+                                          clickHandler={this.clickHandler}/>
                         </div>
                     </Container>
                     <Footer/>
@@ -109,39 +115,41 @@ const PresentAudio = (props) => {
     if (!props.meditationSelected) {
         return (
             <div>
-                {
-                    props.meditationChoices.map((med, index) => (
-                        <Button
-                            key={med}
-                            id={index}
-                            clickHandler={props.clickHandler}
-                            name={med}
-                        />
-                    ))
-                }
+                <div className="btn-space">
+                    {
+                        props.meditationChoices.map((med, index) => (
+                            <Button
+                                key={med}
+                                id={index}
+                                clickHandler={props.clickHandler}
+                                name={med}
+                            />
+                        ))
+                    }
+                </div>
             </div>
         )
     }
     else if (props.meditationSelected && props.meditationType === "Audio") {
         return (
-                <div className="jumbotron text-center">
-                    <h1>Meditation</h1>
-                    <hr className="hr"/>
-                    <p>Choose a relaxing soundscape.</p>
-                    <p className="lead">
-                        {
-                            props.audio.map((audio, index) => (
-                                <Button
-                                    key={audio}
-                                    id={index}
-                                    clickHandler={props.clickHandler}
-                                    name={audio}
-                                />
-                            ))
-                        }
-                    </p>
+            <div className="jumbotron text-center">
+                <h1>Meditation</h1>
+                <hr className="hr"/>
+                <p>Choose a relaxing soundscape.</p>
+                <div className="btn-space">
+                    {
+                        props.audio.map((audio, index) => (
+                            <Button
+                                key={audio}
+                                id={index}
+                                clickHandler={props.clickHandler}
+                                name={audio}
+                            />
+                        ))
+                    }
                 </div>
-
+            </div>
+        
         )
     }
 };
@@ -150,25 +158,39 @@ const BreathCircle = (props) => {
     if (!props.meditationSelected) {
         return (
             <div>
-                {
-                    props.meditationChoices.map((med, index) => (
-                        <Button
-                            key={med}
-                            id={index}
-                            clickHandler={props.clickHandler}
-                            name={med}
-                        />
-                    ))
-                }
+                <div className="btn-space">
+                    {
+                        props.meditationChoices.map((med, index) => (
+                            <Button
+                                key={med}
+                                id={index}
+                                clickHandler={props.clickHandler}
+                                name={med}
+                            />
+                        ))
+                    }
+                </div>
             </div>
         )
     }
     else if (props.meditationSelected && props.meditationType === "Breath") {
         return (
             <div className="circleContainer">
-                <div className="circleText">Breathe fully into your stomach as the circle expands, and fully release as the circle contracts
-                </div>
-                <div className="circle"></div>
+                {(!props.breathStart) ?
+                    <div className="circleText">Breathe fully into your stomach
+                        as
+                        the circle
+                        expands, and fully release as
+                        the circle contracts
+                        <div>
+                            <button onClick={() => props.clickStart("start")} id="start"
+                                    className="btn btn-primary btn-button">Start
+                            </button>
+                        </div>
+                    </div>
+                    :
+                    < div className="circle"></div>
+                }
             </div>
         )
     }
