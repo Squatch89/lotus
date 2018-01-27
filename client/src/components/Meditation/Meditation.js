@@ -20,7 +20,8 @@ class Meditation extends Component {
             meditationSelected: false,
             audio: ["Day Time Forest", "Night Time Forest", "Ocean Waves"],
             audioFiles: [ForestOne, ForestTwo, OceanWaves],
-            chosenAudio: ''
+            chosenAudio: '',
+            breathStart: false
         };
     }
     
@@ -39,6 +40,12 @@ class Meditation extends Component {
         this.setState({chosenAudio: audioName[id], meditationSelected: true});
     };
     
+    
+    startBreath = (id) => {
+        if (id === "start") {
+            this.setState({breathStart: true});
+        }
+    };
     
     clickHandler = (id, name) => {
         console.log("ID: ", id);
@@ -91,7 +98,8 @@ class Meditation extends Component {
                         <div className="jumbotron">
                             <h1>Meditation</h1>
                             <hr className="hr"/>
-                            <BreathCircle {...this.state} clickHandler={this.clickHandler}/>
+                            <BreathCircle {...this.state} clickStart={this.startBreath}
+                                          clickHandler={this.clickHandler}/>
                         </div>
                     </Container>
                     <Footer/>
@@ -108,16 +116,16 @@ const PresentAudio = (props) => {
         return (
             <div>
                 <div className="btn-space">
-                {
-                    props.meditationChoices.map((med, index) => (
-                        <Button
-                            key={med}
-                            id={index}
-                            clickHandler={props.clickHandler}
-                            name={med}
-                        />
-                    ))
-                }
+                    {
+                        props.meditationChoices.map((med, index) => (
+                            <Button
+                                key={med}
+                                id={index}
+                                clickHandler={props.clickHandler}
+                                name={med}
+                            />
+                        ))
+                    }
                 </div>
             </div>
         )
@@ -151,16 +159,16 @@ const BreathCircle = (props) => {
         return (
             <div>
                 <div className="btn-space">
-                {
-                    props.meditationChoices.map((med, index) => (
-                        <Button
-                            key={med}
-                            id={index}
-                            clickHandler={props.clickHandler}
-                            name={med}
-                        />
-                    ))
-                }
+                    {
+                        props.meditationChoices.map((med, index) => (
+                            <Button
+                                key={med}
+                                id={index}
+                                clickHandler={props.clickHandler}
+                                name={med}
+                            />
+                        ))
+                    }
                 </div>
             </div>
         )
@@ -168,10 +176,19 @@ const BreathCircle = (props) => {
     else if (props.meditationSelected && props.meditationType === "Breath") {
         return (
             <div className="circleContainer">
-                <div className="circleText">Breathe fully into your stomach as the circle expands, and fully release as
-                    the circle contracts
-                </div>
-                <div className="circle"></div>
+                {(!props.breathStart) ?
+                    <div className="circleText">Breathe fully into your stomach
+                        as
+                        the circle
+                        expands, and fully release as
+                        the circle contracts
+                        <div>
+                            <button onClick={() => props.clickStart("start")} id="start" className="btn btn-primary btn-button">Start</button>
+                        </div>
+                    </div>
+                    :
+                    < div className="circle"></div>
+                }
             </div>
         )
     }

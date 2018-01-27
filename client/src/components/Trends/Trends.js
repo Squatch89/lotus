@@ -204,7 +204,7 @@ class Trends extends Component {
                                 </div>
                                 :
                                 <div className="text-center">
-                                    <p>Trends
+                                    <p className="monthTrendsText">Trends
                                         for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </p>
                                 </div>
                         }

@@ -26,6 +26,10 @@ audio {
     justify-content: space-evenly;
 }
 
+hr {
+    margin-top: -15px;
+}
+
 @-webkit-keyframes grow {
     0% {
         -webkit-transform: scale( 0.01 );-moz-transform: scale( 0.01 );-o-transform: scale( 0.01 );-ms-transform: scale( 0.01 );transform: scale( 0.01 );

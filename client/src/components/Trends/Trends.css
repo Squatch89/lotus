@@ -85,3 +85,20 @@ svg {
     }
 }
 
+@media screen and (max-width: 360px) {
+    .btn-button {
+       padding: 5px;
+        font-size: .75em;
+    }
+    .trendsText {
+        margin-top: 1%;
+        margin-bottom: 13%;
+        font-size: .75em;
+    }
+    .monthTrendsText {
+        margin-top: 1%;
+        margin-bottom: 29%;
+        font-size: .75em;
+    }
+}
+
