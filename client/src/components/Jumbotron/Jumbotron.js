@@ -18,7 +18,7 @@ const Jumbotron = () => {
                     <hr className="hr"/>
                     <p>Track your mental health, and take a break through meditation.</p>
                     <p className="lead">
-                        <Link className="btn btn-primary btn-lg" to="/signin">Sign In</Link>
+                        <Link className="btn btn-primary btn-lg btn-button" to="/signin">Sign In</Link>
                     </p>
                 </div>
             </Container>

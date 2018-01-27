@@ -9,9 +9,20 @@ svg {
     margin-top: -15%;
 }
 
+.trendotron {
+    background-color: #143A52;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 100%;
+    height: 75%;
+    text-align: center;
+}
+
 .trendsText {
-    color: #0E7A8C;
     font-weight: 900;
+    color: #CDE3EB;
 }
 
 .arrow {
@@ -39,6 +50,11 @@ svg {
 .btn-container {
     display: flex;
     justify-content: space-around;
+}
+
+.btn-button {
+    background-color: #CDE3EB;
+    color: #143A52;
 }
 
 @media screen and (min-width: 1000px) {

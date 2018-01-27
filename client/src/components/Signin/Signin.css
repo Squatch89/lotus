@@ -23,3 +23,8 @@
     font-style: italic;
     margin: 0;
 }
+
+.btn-button {
+    background-color: #CDE3EB;
+    color: #143A52;
+}

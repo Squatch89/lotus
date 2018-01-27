@@ -183,50 +183,53 @@ class Trends extends Component {
             <Wrapper>
                 <Header/>
                 <Container>
-                    
-                    <div className=" btn-container text-center">
-                        <i className="fa fa-arrow-left arrow" id="back" onClick={this.whichWeek}/>
-                        <span id="center-btn">
-                             <button className="btn btn-primary" id="week"
+                    <div className="trendotron">
+                        <div className=" btn-container text-center">
+                            <i className="fa fa-arrow-left arrow" id="back" onClick={this.whichWeek}/>
+                            <span id="center-btn">
+                             <button className="btn btn-primary btn-button" id="week"
                                      onClick={this.weekOrMonth}>Weekly Trends</button>
-                             <button className="btn btn-primary" id="month"
+                             <button className="btn btn-primary btn-button" id="month"
                                      onClick={this.weekOrMonth}>Monthly Trends</button>
                         </span>
-                        <i className="fa fa-arrow-right arrow" id="forward" onClick={this.whichWeek}/>
-                    </div>
-                    
-                    {/*displays the current date for the data that was pulled*/}
-                    {(this.state.timeFrame === "week") ?
-                        <div className="text-center">
-                            <p className="trendsText">Trends for the week
-                                of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</p>
+                            <i className="fa fa-arrow-right arrow" id="forward" onClick={this.whichWeek}/>
                         </div>
-                        :
-                        <div className="text-center">
-                            <p>Trends for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </p>
-                        </div>
-                    }
-                    
-                    {/*{console.log(`What is the state of Good? ${this.state.good}`)}*/}
-                    <div className="chart">
-                        {(this.state.good === 0 && this.state.bad === 0 && this.state.neutral === 0) ?
+                        
+                        {/*displays the current date for the data that was pulled*/}
+                        {(this.state.timeFrame === "week") ?
                             <div className="text-center">
-                                <p className="trendsText">Sorry There is no data to display</p>
-                            </div> :
-                            <Chart
-                                chartType="PieChart"
-                                data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
-                                options={{
-                                    "backgroundColor": "transparent",
-                                    "colors": ['#14B2CC', '#3D8C99', '#063840'],
-                                    "legend": {"position": "bottom"}
-                                }}
-                                graph_id="PieChart"
-                                width="100%"
-                                height="100%"
-                                legend_toggle
-                                className="chartBg"
-                            />}
+                                <p className="trendsText">Trends for the week
+                                    of {moment(this.state.startOfWeek).format("D, MMMM, YYYY")} to {moment(this.state.endOfWeek).format("D, MMMM, YYYY")}</p>
+                            </div>
+                            :
+                            <div className="text-center">
+                                <p>Trends for {this.state.months[this.state.prevMonth]} {this.state.currentYear} </p>
+                            </div>
+                        }
+                        
+                        {/*{console.log(`What is the state of Good? ${this.state.good}`)}*/}
+                        <div className="chart">
+                            {(this.state.good === 0 && this.state.bad === 0 && this.state.neutral === 0) ?
+                                <div className="text-center">
+                                    <p className="trendsText">Sorry There is no data to display</p>
+                                </div> :
+                                <Chart
+                                    chartType="PieChart"
+                                    data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
+                                    options={{
+                                        "backgroundColor": "transparent",
+                                        "colors": ['#88D3EE', '#3E5F6B', '#5E686B'],
+                                        "legend": {"position": "bottom", "textStyle": {"color": "#E3EFF3"} },
+                                        "is3D": "true",
+                                        "tooltip": {"textStyle": {"color": '#000000'}, "showColorCode": "true"}
+                                    }}
+                                    graph_id="PieChart"
+                                    width="100%"
+                                    height="100%"
+                                    legend_toggle
+                                    className="chartBg"
+                                />}
+                        </div>
                     </div>
                 </Container>
                 <Footer/>
