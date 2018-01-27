@@ -218,9 +218,10 @@ class Trends extends Component {
                                     data={[["User Trends", "Type of Days Had"], ["Good", this.state.good.length], ["Neutral", this.state.neutral.length], ["Bad", this.state.bad.length]]}
                                     options={{
                                         "backgroundColor": "transparent",
-                                        "colors": ['#14B2CC', '#3D8C99', '#063840'],
-                                        "legend": {"position": "bottom"},
-                                        "is3D": "true"
+                                        "colors": ['#88D3EE', '#3E5F6B', '#5E686B'],
+                                        "legend": {"position": "bottom", "textStyle": {"color": "#E3EFF3"} },
+                                        "is3D": "true",
+                                        "tooltip": {"textStyle": {"color": '#000000'}, "showColorCode": "true"}
                                     }}
                                     graph_id="PieChart"
                                     width="100%"
