@@ -1,4 +1,4 @@
-# lotus
+# Lotus Tracker
 Version 1.0 1/27/2018
 
 Track your mood and relax with Lotus Tracker. This MERN stack application stores user mood data, shows weekly and monthly mood trends, and offers techniques and resources for relaxation.
@@ -17,26 +17,26 @@ To run in root folder input `node server.js`. The server will run, and the site 
 
 # Dependencies:
 * Server:
-** express
-** body-parser
-** path
-** serve-favicon
-** bcrypt
-** mongoose
-** morgan
-** jsonwebtoken
+  * express
+  * body-parser
+  * path
+  * serve-favicon
+  * bcrypt
+  * mongoose
+  * morgan
+  * jsonwebtoken
 
 * Client:
-** react
-** react-dom
-** react-router-dom
-** react-scripts
-** react-google-charts
-** path
-** axios
-** bcrypt
-** moment
-** jsonwebtoken
+  * react
+  * react-dom
+  * react-router-dom
+  * react-scripts
+  * react-google-charts
+  * path
+  * axios
+  * bcrypt
+  * moment
+  * jsonwebtoken
 
 # Dummy Login:
 * Username: 'username'
