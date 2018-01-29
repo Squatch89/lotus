@@ -2,6 +2,7 @@ const express = require('express');
 const apiRouter =  express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const moment = require('moment');
 const cookieParser = require('cookie-parser');
 const db = require("../models");
 
@@ -12,8 +13,23 @@ const generateToken = (_id, username) => {
             _id,
             username
         }
-    }, 'awesome');
+    }, 'someone');
     return token;
+};
+
+const generateTimeToken = (time) => {
+    const timeToken = jwt.sign({
+        exp: time,
+        data: {
+            mood: "mood timeout"
+        }
+    }, 'sometime');
+    return timeToken;
+};
+
+const setTimeCookie = (time) => {
+    document.cookie = 'cookie=time;expires='+time+';path=/';
+    res.cookie('nextMood', true)
 };
 
 apiRouter.post("/signup", (req, res) => {
@@ -71,7 +87,7 @@ const verifyCookie = (req, res, next) => {
     const {token} = req.cookies;
     jwt.verify(token, 'awesome', (err, decoded) => {
         if(err){
-            res.status(401).json({error:"No Access buddy"});
+            res.status(401).json({error:"Access Denied"});
         } else{
             next();
         }
@@ -92,7 +108,16 @@ apiRouter.post('/mood', (req, res) => {
         })
         .then((dbUser) => {
             console.log("mood logged");
-            res.json(dbUser);
+
+            // res.json(dbUser);
+
+            // generates token for tracking mood logs
+            const beginningOfDay = moment(Date.now()).startOf('day');
+            const nextDay = beginningOfDay.add(1,'days').unix();
+            console.log(nextDay);
+            const timeToken = generateTimeToken(nextDay);
+            res.cookie("timeToken", timeToken);
+            res.status(200).json({msg:"User mood is stored"});
         })
         .catch((err) => {
             console.log(err);
