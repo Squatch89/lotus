@@ -17,19 +17,8 @@ const generateToken = (_id, username) => {
     return token;
 };
 
-const generateTimeToken = (time) => {
-    const timeToken = jwt.sign({
-        exp: time,
-        data: {
-            mood: "mood timeout"
-        }
-    }, 'sometime');
-    return timeToken;
-};
-
-const setTimeCookie = (time) => {
-    document.cookie = 'cookie=time;expires='+time+';path=/';
-    res.cookie('nextMood', true)
+const setTimeCookie = (time, res) => {
+    res.cookie('nextMood', true, {maxAge: time});
 };
 
 apiRouter.post("/signup", (req, res) => {
@@ -113,10 +102,10 @@ apiRouter.post('/mood', (req, res) => {
 
             // generates token for tracking mood logs
             const beginningOfDay = moment(Date.now()).startOf('day');
+            console.log(beginningOfDay);
             const nextDay = beginningOfDay.add(1,'days').unix();
-            console.log(nextDay);
-            const timeToken = generateTimeToken(nextDay);
-            res.cookie("timeToken", timeToken);
+            const timeLeft = nextDay - moment().unix();
+            setTimeCookie(timeLeft, res);
             res.status(200).json({msg:"User mood is stored"});
         })
         .catch((err) => {
