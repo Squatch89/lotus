@@ -187,10 +187,10 @@ class Trends extends Component {
                         <div className=" btn-container text-center">
                             <i className="fa fa-arrow-left arrow" id="back" onClick={this.whichWeek}/>
                             <span id="center-btn">
-                             <button className="btn btn-primary btn-button" id="week"
-                                     onClick={this.weekOrMonth}>Weekly Trends</button>
-                             <button className="btn btn-primary btn-button" id="month"
-                                     onClick={this.weekOrMonth}>Monthly Trends</button>
+                             <button className="btn btn-primary btn-button trends" id="week"
+                                     onClick={this.weekOrMonth}>Weekly</button>
+                             <button className="btn btn-primary btn-button trends" id="month"
+                                     onClick={this.weekOrMonth}>Monthly</button>
                         </span>
                             <i className="fa fa-arrow-right arrow" id="forward" onClick={this.whichWeek}/>
                         </div>
