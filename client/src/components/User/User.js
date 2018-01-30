@@ -6,6 +6,7 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import './User.css';
 import axios from 'axios';
+import moment from "moment";
 
 // creates User component to render to the page
 class User extends Component {
@@ -13,16 +14,24 @@ class User extends Component {
     constructor() {
         super();
         this.state = {
-            checkedIn: false,
-            username: JSON.parse(sessionStorage.getItem('UN'))
+            username: JSON.parse(sessionStorage.getItem('UN')),
+            moodLogged: false,
+            firstLoad: false
         };
     }
     
     sendToDB = (mood, username) => {
         
-        axios.post('/api/mood', {username, mood})
+        const currentMoodDate = new Date();
+        const date = moment(currentMoodDate);
+        const day = date.date();
+        const month = date.month();
+        const year = date.year();
+        
+        axios.post('/api/mood', {username, year, month, day, mood})
             .then((data) => {
                 console.log(data);
+                this.setState({moodLogged: data.data});
             })
             .catch((err) => {
                 console.log("There was an error.");
@@ -34,15 +43,50 @@ class User extends Component {
         const mood = id.target.id;
         console.log(this.state.username);
         console.log("ID:", mood);
-        this.setState({checkedIn: true});
         
         this.sendToDB(mood, this.state.username);
         //function to send data to the db of the logged in user
         // sendToDB(id.target.id);
     };
     
+    checkIfMoodLogged = (username) => {
+        
+        const currentMoodDate = new Date();
+        const date = moment(currentMoodDate);
+        const day = date.date();
+        const month = date.month();
+        const year = date.year();
+        const mood = "no";
+        
+        
+        axios.post('/api/mood', {username, year, month, day, mood})
+            .then((data) => {
+                console.log(data.data);
+                this.setState({moodLogged: data.data, firstLoad: true});
+            })
+            .catch((err) => {
+                console.log("There was an error.");
+                console.log(err);
+            })
+    };
+    
+    componentDidMount() {
+        this.checkIfMoodLogged(this.state.username);
+    }
+    
     render() {
-        if (!this.state.checkedIn) {
+        
+        if (!this.state.moodLogged && !this.state.firstLoad) {
+            return (
+                <Wrapper>
+                    <Header/>
+                    <Container>
+                    </Container>
+                    <Footer/>
+                </Wrapper>
+            )
+        }
+        else if (!this.state.moodLogged && this.state.firstLoad) {
             return (
                 <Wrapper>
                     <Header/>
@@ -82,7 +126,7 @@ class User extends Component {
 }
 
 const MedOrTrend = (props) => {
-    if (props.checkedIn) {
+    if (props.moodLogged) {
         return (
             <div className="medOrTrend">
                 <div className="choice-txt">What would you like to do next?</div>
