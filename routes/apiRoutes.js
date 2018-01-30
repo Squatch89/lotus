@@ -171,15 +171,15 @@ apiRouter.get('/mood/trends/:username', (req, res) => {
         });
 });
 
-apiRouter.get('/mood/trends/prevweek/:username', (req, res) => {
+apiRouter.get('/mood/trends/prevdata/:username', (req, res) => {
     console.log("received get request");
     console.log(req.params.username);
     
     db.User.findOne({username: req.params.username})
         .populate("mood")
-        .then((prevWeek) => {
-            console.log(prevWeek.mood);
-            res.send(prevWeek.mood);
+        .then((prevData) => {
+            console.log(prevData.mood);
+            res.send(prevData.mood);
         })
         .catch((err) => {
             res.status(400).json({err: "Connection error"});

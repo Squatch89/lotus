@@ -32,8 +32,8 @@ svg {
     font-size: 32px;
 }
 
-.arrow:hover {
-    color: white;
+.arrow:active {
+    color: black;
 }
 
 .chart {

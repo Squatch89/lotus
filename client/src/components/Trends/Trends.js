@@ -77,7 +77,6 @@ class Trends extends Component {
                 if (this.state.prevWeek > 0) {
                     this.setState({prevWeek: this.state.prevWeek - 1});
                 }
-                
             }
             else if (e.target.id === "forward") {
                 if (this.state.prevWeek < this.state.currentWeek) {
@@ -97,13 +96,13 @@ class Trends extends Component {
                 }
             }
         }
-        
         console.log(this.state.prevWeek);
+        console.log(this.state.prevMonth);
         this.getTrendsData();
     };
     
     getTrendsData = () => {
-        axios.get(`/api/mood/trends/prevweek/${this.state.username}`)
+        axios.get(`/api/mood/trends/prevdata/${this.state.username}`)
             .then((data) => {
                 console.log(data.data);
                 this.setState({good: 0, neutral: 0, bad: 0});
