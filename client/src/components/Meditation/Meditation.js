@@ -109,7 +109,7 @@ class Meditation extends Component {
     }
 }
 
-//tenerary operator to switch between medtype buttons and then the screens
+// if statement to switch between medtype buttons and then the screens
 
 const PresentAudio = (props) => {
     if (!props.meditationSelected) {
