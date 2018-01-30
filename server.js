@@ -5,8 +5,7 @@ const favicon = require('serve-favicon');
 const mongoose = require('mongoose');
 const logger = require("morgan");
 const db = require("./models");
-const apiRoutes = require('./routes/apiRoutes');
-const htmlRoutes = require('./routes/htmlRoutes');
+const apiRoutes = require('./routes/apiRoutes')
 const cookieParser = require('cookie-parser');
 
 const app = express();
@@ -36,8 +35,6 @@ else {
         useMongoClient: true
     });
 }
-
-app.use('/', htmlRoutes);
 
 
 app.listen(process.env.PORT || 3001);
