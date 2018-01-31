@@ -44,7 +44,7 @@ const App = (props) => (
         <PublicRoute path="/signin" component={Signin}/>
         <PrivateRoute path="/trends" component={Trends}/>
         <PrivateRoute path="/user" component={User}/>
-        <PrivateRoute path="/meditation" component={Meditation}/>
+        <PrivateRoute exact path="/meditation/:test" component={Meditation}/>
     </div>
     </Router>
 );
