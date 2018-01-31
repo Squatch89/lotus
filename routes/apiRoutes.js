@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 const moment = require('moment');
 const cookieParser = require('cookie-parser');
 const db = require("../models");
-const moment = require('moment');
 
 const generateToken = (_id, username) => {
     const token = jwt.sign({
