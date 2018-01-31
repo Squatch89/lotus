@@ -132,7 +132,7 @@ const MedOrTrend = (props) => {
                 <div className="choice-txt">What would you like to do next?</div>
                 <div className="btn-choices">
                     <Link to="/trends">
-                        <button className="btn btn-primary btn-lg btn-button">Check Your Trends</button>
+                        <button className="btn btn-primary btn-lg btn-button">Check Trends</button>
                     </Link>
                     <Link to="/meditation">
                         <button className="btn btn-primary btn-lg btn-button">Do Some Meditation</button>

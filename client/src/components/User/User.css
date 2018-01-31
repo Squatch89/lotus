@@ -56,3 +56,16 @@
         padding: 0 17px 0 17px;
     }
 }
+
+@media screen and (max-width: 361px) {
+    .moodbtn {
+        font-size: 247%;
+        margin: 15px;
+    }
+    
+    .moodbtn:hover {
+        font-size: 300%;
+        margin: -6px;
+        padding: 0 17px 0 17px;
+    }
+}
