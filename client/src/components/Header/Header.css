@@ -30,6 +30,7 @@
     grid-column-end: headercol11;
     grid-row-start: headerrow1;
     grid-row-end: headerrow3;
+    margin-top: -5px;
 }
 
 .navbar-group {
@@ -84,8 +85,8 @@
 }
 
 #logoutBtn:hover {
-    background-color: #0496a2;
-    color: #CDE3EB;
+    background-color: #81a4db;
+    /*color: #CDE3EB;*/
 }
 
 @media screen and (min-width: 737px) {

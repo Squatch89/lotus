@@ -1,12 +1,11 @@
 {
-  "main.css": "static/css/main.f545563d.css",
-  "main.css.map": "static/css/main.f545563d.css.map",
-  "main.js": "static/js/main.a8b40ffb.js",
-  "main.js.map": "static/js/main.a8b40ffb.js.map",
-  "static/media/Forest-1.wav": "static/media/Forest-1.8f737d45.wav",
-  "static/media/Forest-2.wav": "static/media/Forest-2.7351a481.wav",
-  "static/media/Ocean-1.wav": "static/media/Ocean-1.abd33f9f.wav",
-  "static/media/Pink-Noise.wav": "static/media/Pink-Noise.29d5a48a.wav",
-  "static/media/White-Noise.wav": "static/media/White-Noise.ae412748.wav",
-  "static/media/logo.png": "static/media/logo.9df72b88.png"
+  "main.css": "static/css/main.dccb6f19.css",
+  "main.css.map": "static/css/main.dccb6f19.css.map",
+  "main.js": "static/js/main.0dcdb7d8.js",
+  "main.js.map": "static/js/main.0dcdb7d8.js.map",
+  "static\\media\\Forest-1.wav": "static/media/Forest-1.8f737d45.wav",
+  "static\\media\\Forest-2.wav": "static/media/Forest-2.7351a481.wav",
+  "static\\media\\Ocean-1.wav": "static/media/Ocean-1.abd33f9f.wav",
+  "static\\media\\background.PNG": "static/media/background.2f5cd6b5.PNG",
+  "static\\media\\logo.png": "static/media/logo.7e9501a6.png"
 }

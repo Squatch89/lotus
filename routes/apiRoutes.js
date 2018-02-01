@@ -2,9 +2,9 @@ const express = require('express');
 const apiRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const moment = require('moment');
 const cookieParser = require('cookie-parser');
 const db = require("../models");
-const moment = require('moment');
 
 const generateToken = (_id, username) => {
     const token = jwt.sign({
@@ -13,9 +13,10 @@ const generateToken = (_id, username) => {
             _id,
             username
         }
-    }, 'awesome');
+    }, 'someone');
     return token;
 };
+
 
 apiRouter.post("/signup", (req, res) => {
     const {username, password} = req.body;
@@ -71,9 +72,9 @@ apiRouter.post("/signin", (req, res) => {
 const verifyCookie = (req, res, next) => {
     const {token} = req.cookies;
     jwt.verify(token, 'awesome', (err, decoded) => {
-        if (err) {
-            res.status(401).json({error: "No Access buddy"});
-        } else {
+        if(err){
+            res.status(401).json({error:"Access Denied"});
+        } else{
             next();
         }
     });
@@ -88,7 +89,7 @@ apiRouter.post('/mood', (req, res) => {
     console.log(year);
     console.log(month);
     console.log(day);
-    
+
     //checks to see if a user exits
     db.User.findOne({username: username})
         .then((userData) => {

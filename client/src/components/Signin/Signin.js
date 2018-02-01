@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Link, withRouter} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import './Signin.css';
 import Wrapper from '../Wrapper/Wrapper.js';
 import Container from '../Container/Container.js';
@@ -26,11 +26,10 @@ class Signin extends Component {
                 sessionStorage.setItem('isAuthenticated', JSON.stringify(true));
                 sessionStorage.setItem('UN', JSON.stringify(this.state.username));
                 this.setState({loginerror: false});
-            }).then((data)=> {
-            this.props.history.push('/user');
-        })
+                window.location.reload();
+            })
             .catch((err) => {
-                // Not signed
+                // Not signed in
                 console.log("Error Happened");
                 console.log(err);
                 this.setState({loginerror: true});
@@ -38,6 +37,10 @@ class Signin extends Component {
     };
 
     render() {
+
+        if (this.state.redirect) {
+            return (<Redirect to={{pathname: '/user'}} />);
+        }
 
         if (this.state.loginerror) {
             return (
@@ -122,4 +125,4 @@ class Signin extends Component {
 
 }
 
-export default withRouter(Signin);
+export default Signin;

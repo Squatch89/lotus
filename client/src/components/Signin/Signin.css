@@ -9,12 +9,12 @@
     -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
-    background-color: rgba(255,255,255,0.85);
+    background-color: rgb(225,247,255);
 }
 
 .input:focus {
     border: 3px solid;
-    border-color: rgba(0,255,150,0.5);
+    border-color: #5b8bcc;
     background-color: rgba(255,255,255,1);
 }
 

@@ -25,9 +25,9 @@ class Signup extends Component {
             .then((data) => {
                 sessionStorage.setItem('isAuthenticated', JSON.stringify(true));
                 sessionStorage.setItem('UN', JSON.stringify(this.state.username));
-            }).then((data) => {
-            this.props.history.push('/user');
-        })
+                // this.props.history.push('/user');
+                window.location.reload();
+            })
             .catch((err) => {
                 console.log(err);
                 this.setState({signinerror: true});
