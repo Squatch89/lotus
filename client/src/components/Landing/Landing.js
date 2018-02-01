@@ -6,8 +6,8 @@ import Wrapper from '../Wrapper/Wrapper.js';
 import Container from '../Container/Container.js';
 
 
-// creates Jumbotron component to render to the  landing page
-const Jumbotron = () => {
+// creates jumbotron component to render to the Landing page
+const Landing = () => {
     return (
 
         <Wrapper>
@@ -26,5 +26,5 @@ const Jumbotron = () => {
     )
 };
 
-// exports Jumbotron for external use
-export default Jumbotron;
+// exports Landing for external use
+export default Landing;

@@ -5,7 +5,7 @@ import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import './Breath.css';
 
-
+// code for breathing circle component
 class Breath extends Component {
     
     constructor() {
@@ -14,7 +14,8 @@ class Breath extends Component {
             breathStart: false
         };
     }
-    
+
+    // shows breathing circle after start button is pressed
     startBreath = (id) => {
         if (id === "start") {
             this.setState({breathStart: true});

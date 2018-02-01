@@ -18,10 +18,10 @@ class Header extends Component {
         event.preventDefault();
         sessionStorage.removeItem('isAuthenticated');
         sessionStorage.removeItem('UN');
-        // this.props.history.push('/');
         window.location.reload();
     };
 
+    // toggles location for showing dropdown
     showLinks = (event) => {
         event.preventDefault();
         if (!this.state.show) {
@@ -40,6 +40,7 @@ class Header extends Component {
                     <img src={logo} alt="lotus logo" className="littlelogo"/>
                     <div className="brand-name navbar-link">Lotus Tracker</div>
                 </span>
+                {/*dropdown menu*/}
                 <div className="navbar-nav">
                     <div className="dropdown-icon navbar-link" onClick={this.showLinks}>&#9776;
                         <div className="dropdown-content" style={{display: (this.state.show) ? 'inline-block' : 'none'}}>
@@ -51,6 +52,7 @@ class Header extends Component {
                     </div>
 
 
+                    {/*full view navigation*/}
                     <ul className="navbar-group">
                         <li className="navbar-item">
                             <button className="btn btn-primary " id="logoutBtn" onClick={this.signOut}>Log Out</button>

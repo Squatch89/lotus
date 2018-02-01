@@ -35,8 +35,5 @@ class Meditation extends Component {
 }
 
 
-// if statement to switch between medtype buttons and then the screens
-
-
 // exports Meditation for external use
 export default Meditation;

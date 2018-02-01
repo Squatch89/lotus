@@ -9,7 +9,8 @@ import OceanWaves from './Audio/Ocean-1.wav';
 
 
 class Soundscape extends Component {
-    
+
+    // stores audio data
     constructor() {
         super();
         this.state = {
@@ -18,15 +19,14 @@ class Soundscape extends Component {
             chosenAudio: '',
         };
     }
-    
+
+    // sets audio based on selection
     chooseAudio = (id, filename) => {
-        
-        console.log("ID: ", id);
         const audioName = this.state.audioFiles;
-        console.log("Audio Path: ", audioName[id]);
         this.setState({chosenAudio: audioName[id]});
     };
-    
+
+    // loads audio data (media player)
     componentDidUpdate() {
             this.refs.audio.load();
     }

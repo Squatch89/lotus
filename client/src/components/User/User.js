@@ -10,7 +10,8 @@ import moment from "moment";
 
 // creates User component to render to the page
 class User extends Component {
-    
+
+    // stores user mood data
     constructor() {
         super();
         this.state = {
@@ -19,7 +20,8 @@ class User extends Component {
             firstLoad: false
         };
     }
-    
+
+    // sends user mood data
     sendToDB = (mood, username) => {
         
         const currentMoodDate = new Date();
@@ -38,17 +40,15 @@ class User extends Component {
                 console.log(err);
             })
     };
-    
+
+    // sets mood and sends to DB function
     checkIn = (id) => {
         const mood = id.target.id;
-        console.log(this.state.username);
-        console.log("ID:", mood);
         
         this.sendToDB(mood, this.state.username);
-        //function to send data to the db of the logged in user
-        // sendToDB(id.target.id);
     };
-    
+
+    // checks if a mood was logged today
     checkIfMoodLogged = (username) => {
         
         const currentMoodDate = new Date();
@@ -57,10 +57,8 @@ class User extends Component {
         const month = date.month();
         const year = date.year();
         
-        
         axios.post('/api/mood', {username, year, month, day})
             .then((data) => {
-                console.log(data.data);
                 this.setState({moodLogged: data.data, firstLoad: true});
             })
             .catch((err) => {
@@ -124,6 +122,7 @@ class User extends Component {
     }
 }
 
+// second user page
 const MedOrTrend = (props) => {
     if (props.moodLogged) {
         return (

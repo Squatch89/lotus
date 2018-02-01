@@ -8,16 +8,18 @@ import Container from '../Container/Container.js';
 
 class Signin extends Component {
 
+    // stores signin state
     constructor() {
         super();
-
         this.state = {};
     }
 
+    // gets input values from signin page
     getValues = (event) => {
         this.setState({[event.target.name]: event.target.value});
     };
 
+    // sends login data
     sendData = (event) => {
         event.preventDefault();
 
@@ -38,10 +40,7 @@ class Signin extends Component {
 
     render() {
 
-        if (this.state.redirect) {
-            return (<Redirect to={{pathname: '/user'}} />);
-        }
-
+        // renders page with error if error
         if (this.state.loginerror) {
             return (
                 <Wrapper>
@@ -80,6 +79,7 @@ class Signin extends Component {
                     </Container>
                 </Wrapper>
             );
+        // else returns no error render
         } else {
             return (
                 <Wrapper>

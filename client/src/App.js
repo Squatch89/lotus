@@ -4,7 +4,7 @@ import {
     Route,
     Redirect
 } from 'react-router-dom';
-import Jumbotron from './components/Jumbotron/Jumbotron.js';
+import Landing from './components/Landing/Landing.js';
 import User from './components/User/User.js';
 import Signin from './components/Signin/Signin.js';
 import Signup from './components/Signup/Signup.js';
@@ -41,7 +41,7 @@ const PublicRoute = ({component: Component, ...rest}) => {
 const App = (props) => (
     <Router>
     <div className="routerDiv">
-        <PublicRoute path="/" component={Jumbotron}/>
+        <PublicRoute path="/" component={Landing}/>
         <PublicRoute path="/signup" component={Signup}/>
         <PublicRoute path="/signin" component={Signin}/>
         <PrivateRoute path="/trends" component={Trends}/>

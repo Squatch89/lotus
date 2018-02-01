@@ -7,17 +7,18 @@ import Container from '../Container/Container.js';
 
 class Signup extends Component {
 
+    // stores signup data
     constructor() {
         super();
-
         this.state = {};
     }
 
+    // gets input values from signup page
     getValues = (event) => {
         this.setState({[event.target.name]: event.target.value});
     };
 
-
+    // sends new user data
     sendData = (event) => {
         event.preventDefault();
 
@@ -25,7 +26,6 @@ class Signup extends Component {
             .then((data) => {
                 sessionStorage.setItem('isAuthenticated', JSON.stringify(true));
                 sessionStorage.setItem('UN', JSON.stringify(this.state.username));
-                // this.props.history.push('/user');
                 window.location.reload();
             })
             .catch((err) => {
@@ -36,6 +36,7 @@ class Signup extends Component {
 
     render() {
 
+        // renders if error
         if (this.state.signinerror) {
             return (
                 <Wrapper>
@@ -74,6 +75,7 @@ class Signup extends Component {
                     </Container>
                 </Wrapper>
             );
+        // renders if no error
         } else {
             return (
                 <Wrapper>

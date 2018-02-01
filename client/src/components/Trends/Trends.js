@@ -35,19 +35,16 @@ class Trends extends Component {
             pulled: false,
         };
     }
-    
+
+    // gets trends data
     getFromDB = () => {
-        
-        console.log(this.state.username);
         
         axios.get(`/api/mood/trends/${this.state.username}`)
             .then((data) => {
-                console.log(data.data);
                 data.data.forEach((ele, index) => {
                     
                     this.setDate(ele.date);
-                    
-                    // console.log(ele.mood);
+
                     if (ele.mood === "good" && moment(ele.date).week() === this.state.currentWeek) {
                         this.setState({good: [...this.state.good, ele.mood]})
                     }
@@ -63,15 +60,13 @@ class Trends extends Component {
                 console.log("There was an error.");
                 console.log(err);
             })
-        
-        // this.setState({trends:})
+
     };
-    
+
+    // allows user to scroll through weeks or months based on selection
     whichWeek = (e) => {
         //date format is in YYYY - MM - DD
-        console.log(this.state.timeFrame);
-        
-        //implement week functionality into month function using same principles
+
         if (this.state.timeFrame === "week") {
             if (e.target.id === "back") {
                 if (this.state.prevWeek > 0) {
@@ -96,19 +91,16 @@ class Trends extends Component {
                 }
             }
         }
-        console.log(this.state.prevWeek);
-        console.log(this.state.prevMonth);
+
         this.getTrendsData();
     };
     
     getTrendsData = () => {
         axios.get(`/api/mood/trends/prevdata/${this.state.username}`)
             .then((data) => {
-                console.log(data.data);
+
                 this.setState({good: 0, neutral: 0, bad: 0});
                 data.data.forEach((ele, index) => {
-                    
-                    console.log(`${moment(ele.date).year()}-${moment(ele.date).month() + 1}-${moment(ele.date).date()}`);
                     
                     //changes data displayed in graph by week
                     if (this.state.timeFrame === "week") {
@@ -143,10 +135,10 @@ class Trends extends Component {
                 })
             })
     };
-    
+
+    // sets week or month based on selection
     weekOrMonth = (e) => {
         const whichTrend = e.target.id;
-        console.log(whichTrend);
         
         if (whichTrend === "week") {
             this.setState({timeFrame: "week"});
@@ -158,7 +150,8 @@ class Trends extends Component {
         }
         
     };
-    
+
+    // sets the start and end of week dates
     setDate = (date) => {
         const startOfWeek = moment(date).startOf("week")._d;
         const endOfWeek = moment(date).endOf("week")._d;
@@ -183,6 +176,7 @@ class Trends extends Component {
                 <Header/>
                 <Container>
                     <div className="trendotron">
+
                         <div className=" btn-container text-center">
                             <i className="fa fa-arrow-left arrow" id="back" onClick={this.whichWeek}/>
                             <span id="center-btn">
@@ -208,7 +202,7 @@ class Trends extends Component {
                                 </div>
                         }
                         
-                        {/*{console.log(`What is the state of Good? ${this.state.good}`)}*/}
+                        {/*chart rendering and error handling*/}
                         <div className="chart">
                             {(this.state.good === 0 && this.state.bad === 0 && this.state.neutral === 0) ?
                                 <div className="text-center">
