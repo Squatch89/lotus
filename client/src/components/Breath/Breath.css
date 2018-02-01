@@ -28,3 +28,10 @@
         -webkit-transform: scale( 0.01 );-moz-transform: scale( 0.01 );-o-transform: scale( 0.01 );-ms-transform: scale( 0.01 );transform: scale( 0.01 );
     }
 }
+
+@media screen and (max-height: 800px){
+    .circle {
+        width: 150px;
+        height: 150px;
+    }
+}
