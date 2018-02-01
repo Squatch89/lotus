@@ -10,6 +10,8 @@ import Signin from './components/Signin/Signin.js';
 import Signup from './components/Signup/Signup.js';
 import Trends from './components/Trends/Trends.js';
 import Meditation from './components/Meditation/Meditation.js';
+import Breath from './components/Breath/Breath.js';
+import Soundscape from './components/Soundscape/Soundscape.js';
 import './App.css';
 
 const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
@@ -44,7 +46,9 @@ const App = (props) => (
         <PublicRoute path="/signin" component={Signin}/>
         <PrivateRoute path="/trends" component={Trends}/>
         <PrivateRoute path="/user" component={User}/>
-        <PrivateRoute exact path="/meditation/:test" component={Meditation}/>
+        <PrivateRoute exact path="/meditation" component={Meditation}/>
+        <PrivateRoute path="/user" component={Breath}/>
+        <PrivateRoute path="/user" component={Soundscape}/>
     </div>
     </Router>
 );
