@@ -31,6 +31,7 @@ html {
     border-radius: 7px;
     text-decoration: none;
     margin: 2px;
+    font-family: "serif";
 }
 
 .btn-primary {
@@ -41,7 +42,6 @@ html {
 
 .btn:hover {
     background-color: #81a4db;
-    /*color: #CDE3EB;*/
 }
 
 .btn-button {
