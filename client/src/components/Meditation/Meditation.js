@@ -57,23 +57,23 @@ const Breathcircle = (props, clickHandler, startBreath) => {
         <div className="jumbotron">
             <h1>Guided Breathing</h1>
             <hr className="hr"/>
-        <div className="circleContainer">
-            {(!props.breathStart) ?
-                <div className="circleText">Breathe fully into your stomach
-                    as
-                    the circle
-                    expands, and fully release as
-                    the circle contracts
-                    <div>
-                        <button onClick={() => startBreath("start")} id="start"
-                                className="btn btn-primary btn-button">Start
-                        </button>
+            <div className="circleContainer">
+                {(!props.breathStart) ?
+                    <div className="circleText">Breathe fully into your stomach
+                        as
+                        the circle
+                        expands, and fully release as
+                        the circle contracts
+                        <div>
+                            <button onClick={() => startBreath("start")} id="start"
+                                    className="btn btn-primary btn-button">Start
+                            </button>
+                        </div>
                     </div>
-                </div>
-                :
-                < div className="circle"></div>
-            }
-        </div>
+                    :
+                    < div className="circle"></div>
+                }
+            </div>
         </div>
     )
 };
@@ -86,11 +86,11 @@ class Meditation extends Component {
         this.state = {
             meditationChoices: ["Breath", "Audio"],
             meditationType: '',
-            meditationSelected: false,
+            meditationSelected: true,
             audio: ["Day Time Forest", "Night Time Forest", "Ocean Waves"],
             audioFiles: [ForestOne, ForestTwo, OceanWaves],
             chosenAudio: '',
-            breathStart: false
+            breathStart: true
         };
     }
 
@@ -124,13 +124,13 @@ class Meditation extends Component {
             this.chooseMedType(id, name);
         }
 
-        else if (this.state.meditationSelected && this.state.meditationType === "Audio") {
+        // else if (this.state.meditationSelected && this.state.meditationType === "Audio") {
             this.chooseAudio(id, name);
-        }
+        // }
 
-        else {
-            console.log("hmmm that didn't work");
-        }
+        // else {
+        //     console.log("hmmm that didn't work");
+        // }
     };
 
     componentDidUpdate() {
