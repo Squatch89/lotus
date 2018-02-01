@@ -2,23 +2,6 @@ audio {
     display: none;
 }
 
-.circleContainer {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.circle {
-    background: #fafcf7;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    -webkit-animation:grow 10s infinite;
-}
-
 .btn-space {
     display: flex;
     flex-direction: row;
@@ -28,20 +11,6 @@ audio {
 
 hr {
     margin-top: -15px;
-}
-
-@-webkit-keyframes grow {
-    0% {
-        -webkit-transform: scale( 0.01 );-moz-transform: scale( 0.01 );-o-transform: scale( 0.01 );-ms-transform: scale( 0.01 );transform: scale( 0.01 );
-    }
-    
-    50% {
-        -webkit-transform: scale( 1 );-moz-transform: scale( 1 );-o-transform: scale( 1 );-ms-transform: scale( 1 );transform: scale( 1 );
-    }
-    
-    100% {
-        -webkit-transform: scale( 0.01 );-moz-transform: scale( 0.01 );-o-transform: scale( 0.01 );-ms-transform: scale( 0.01 );transform: scale( 0.01 );
-    }
 }
 
 

@@ -46,6 +46,14 @@ class Soundscape extends Component {
                             <button onClick={() => {this.chooseAudio(0)}} className="btn btn-primary btn-lg btn-button audio">Day Time Forest</button>
                             <button onClick={() => {this.chooseAudio(1)}} className="btn btn-primary btn-lg btn-button audio">Night Time Forest</button>
                             <button onClick={() => {this.chooseAudio(2)}} className="btn btn-primary btn-lg btn-button audio">Ocean Waves</button>
+    
+                            <audio controls ref="audio" autoPlay loop>
+        
+                                <source src={this.state.chosenAudio} type="audio/wav" />
+        
+                                not supported
+    
+                            </audio>
                             
                         </div>
                     </div>

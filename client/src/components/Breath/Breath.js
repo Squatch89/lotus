@@ -3,6 +3,7 @@ import Wrapper from '../Wrapper/Wrapper.js';
 import Container from '../Container/Container.js';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
+import './Breath.css';
 
 
 class Breath extends Component {
