@@ -36,7 +36,7 @@ class Breath extends Component {
                                     expands, and fully release as
                                     the circle contracts
                                     <div>
-                                        <button onClick={this.startBreath("start")} id="start"
+                                        <button onClick={() => {this.startBreath("start")}} id="start"
                                                 className="btn btn-primary btn-button">Start
                                         </button>
                                     </div>

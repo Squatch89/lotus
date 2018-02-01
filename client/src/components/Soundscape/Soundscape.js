@@ -43,9 +43,9 @@ class Soundscape extends Component {
                         <p>Choose a relaxing soundscape.</p>
                         <div className="btn-space">
                         
-                            <button onClick={this.chooseAudio(0)} className="btn btn-primary btn-lg btn-button audio">Day Time Forest</button>
-                            <button onClick={this.chooseAudio(1)} className="btn btn-primary btn-lg btn-button audio">Night Time Forest</button>
-                            <button onClick={this.chooseAudio(2)} className="btn btn-primary btn-lg btn-button audio">Ocean Waves</button>
+                            <button onClick={() => {this.chooseAudio(0)}} className="btn btn-primary btn-lg btn-button audio">Day Time Forest</button>
+                            <button onClick={() => {this.chooseAudio(1)}} className="btn btn-primary btn-lg btn-button audio">Night Time Forest</button>
+                            <button onClick={() => {this.chooseAudio(2)}} className="btn btn-primary btn-lg btn-button audio">Ocean Waves</button>
                             
                         </div>
                     </div>
