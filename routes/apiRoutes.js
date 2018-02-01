@@ -81,11 +81,27 @@ const verifyCookie = (req, res, next) => {
     
 };
 
+apiRouter.post('/daily/mood', (req,res) => {
+    const {username, year, month, day, mood} = req.body;
+    db.Trends.create({mood: mood})
+        .then((dbTrend) => {
+            console.log("first .then");
+            return db.User.findOneAndUpdate({username: username}, {$addToSet: {mood: dbTrend._id}}, {new: true});
+        })
+        .then((dbUser) => {
+            console.log("mood logged");
+            res.send(true);
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(400).json({err: "Connection error"});
+        });
+});
+
 apiRouter.post('/mood', (req, res) => {
     console.log("Got the post!");
-    const {username, year, month, day, mood} = req.body;
+    const {username, year, month, day} = req.body;
     console.log(username);
-    console.log(mood);
     console.log(year);
     console.log(month);
     console.log(day);
@@ -93,6 +109,7 @@ apiRouter.post('/mood', (req, res) => {
     //checks to see if a user exits
     db.User.findOne({username: username})
         .then((userData) => {
+            console.log("mood length");
             console.log(userData.mood.length);
             //checks to see if a user has any moods logged yet
             if (userData.mood.length > 0) {
@@ -100,6 +117,11 @@ apiRouter.post('/mood', (req, res) => {
                     .populate("mood")
                     .then((userTrends) => {
                         const lastPostDate = moment(userTrends.mood[userTrends.mood.length - 1].date);
+                        console.log("lastPostDate");
+                        console.log(lastPostDate);
+                        console.log(lastPostDate.year());
+                        console.log(lastPostDate.month());
+                        console.log(lastPostDate.date());
                         
                         //checks to see if a user has logged a mood today
                         if (lastPostDate.year() === year && lastPostDate.month() === month && lastPostDate.date() === day) {
@@ -109,19 +131,7 @@ apiRouter.post('/mood', (req, res) => {
                         else {
                             //if a user has not logged a mood today then allow them to log a mood
                             console.log("you make post!");
-                            db.Trends.create({mood: mood})
-                                .then((dbTrend) => {
-                                    console.log("first .then");
-                                    return db.User.findOneAndUpdate({username: username}, {$addToSet: {mood: dbTrend._id}}, {new: true});
-                                })
-                                .then((dbUser) => {
-                                    console.log("mood logged");
-                                    res.send(true);
-                                })
-                                .catch((err) => {
-                                    console.log(err);
-                                    res.status(400).json({err: "Connection error"});
-                                });
+                            res.send(false);
                         }
                         // res.json(userTrends.mood);
                     })
@@ -131,25 +141,8 @@ apiRouter.post('/mood', (req, res) => {
                     });
             }
             else {
-                //if a user has not logged their first ever mood let them log a mood
-                if (mood === "no") {
-                    res.send(false);
-                }
-                else {
-                    db.Trends.create({mood: mood})
-                        .then((dbTrend) => {
-                            console.log("first .then");
-                            return db.User.findOneAndUpdate({username: username}, {$addToSet: {mood: dbTrend._id}}, {new: true});
-                        })
-                        .then((dbUser) => {
-                            console.log("mood logged");
-                            res.json(dbUser);
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                            res.status(400).json({err: "Connection error"});
-                        });
-                }
+                console.log("hit the else statement checking to see if posted today");
+               res.send(false);
             }
         });
     

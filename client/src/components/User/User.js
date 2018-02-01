@@ -28,7 +28,7 @@ class User extends Component {
         const month = date.month();
         const year = date.year();
         
-        axios.post('/api/mood', {username, year, month, day, mood})
+        axios.post('/api/daily/mood', {username, year, month, day, mood})
             .then((data) => {
                 console.log(data);
                 this.setState({moodLogged: data.data});
@@ -56,10 +56,9 @@ class User extends Component {
         const day = date.date();
         const month = date.month();
         const year = date.year();
-        const mood = "no";
         
         
-        axios.post('/api/mood', {username, year, month, day, mood})
+        axios.post('/api/mood', {username, year, month, day})
             .then((data) => {
                 console.log(data.data);
                 this.setState({moodLogged: data.data, firstLoad: true});
