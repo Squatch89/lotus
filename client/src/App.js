@@ -47,8 +47,8 @@ const App = (props) => (
         <PrivateRoute path="/trends" component={Trends}/>
         <PrivateRoute path="/user" component={User}/>
         <PrivateRoute exact path="/meditation" component={Meditation}/>
-        <PrivateRoute path="/user" component={Breath}/>
-        <PrivateRoute path="/user" component={Soundscape}/>
+        <PrivateRoute path="/breath" component={Breath}/>
+        <PrivateRoute path="/soundscape" component={Soundscape}/>
     </div>
     </Router>
 );

@@ -16,7 +16,6 @@ class Soundscape extends Component {
             audio: ["Day Time Forest", "Night Time Forest", "Ocean Waves"],
             audioFiles: [ForestOne, ForestTwo, OceanWaves],
             chosenAudio: '',
-            breathStart: false
         };
     }
     
@@ -25,15 +24,13 @@ class Soundscape extends Component {
         console.log("ID: ", id);
         const audioName = this.state.audioFiles;
         console.log("Audio Path: ", audioName[id]);
-        this.setState({chosenAudio: audioName[id], meditationSelected: true});
+        this.setState({chosenAudio: audioName[id]});
     };
     
     componentDidUpdate() {
-        console.log("Hello World!!");
-        if (this.state.meditationType === "Audio") {
             this.refs.audio.load();
-        }
     }
+    
     render() {
         return (
         
@@ -46,9 +43,9 @@ class Soundscape extends Component {
                         <p>Choose a relaxing soundscape.</p>
                         <div className="btn-space">
                         
-                            <button className="btn btn-primary btn-lg btn-button">Day Time Forest</button>
-                            <button className="btn btn-primary btn-lg btn-button">Night Time Forest</button>
-                            <button className="btn btn-primary btn-lg btn-button">Ocean Waves</button>
+                            <button onClick={this.chooseAudio(0)} className="btn btn-primary btn-lg btn-button audio">Day Time Forest</button>
+                            <button onClick={this.chooseAudio(1)} className="btn btn-primary btn-lg btn-button audio">Night Time Forest</button>
+                            <button onClick={this.chooseAudio(2)} className="btn btn-primary btn-lg btn-button audio">Ocean Waves</button>
                             
                         </div>
                     </div>

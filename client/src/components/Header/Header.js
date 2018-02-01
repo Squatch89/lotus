@@ -45,7 +45,7 @@ class Header extends Component {
                         <div className="dropdown-content" style={{display: (this.state.show) ? 'inline-block' : 'none'}}>
                             <Link to="/user" className="navbar-link navbar-item">User</Link>
                             <Link to="/trends" className="navbar-link navbar-item">Trends</Link>
-                            <Link to="/meditation/meditationlanding" className="navbar-link navbar-item">Meditation</Link>
+                            <Link to="/meditation" className="navbar-link navbar-item">Meditation</Link>
                             <button className="btn btn-primary " id="logoutBtn" onClick={this.signOut}>Log Out</button>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ class Header extends Component {
                             <Link className="navbar-link" to="/trends">Trends</Link>
                         </li>
                         <li className="navbar-item">
-                            <Link className="navbar-link" to="/meditation/meditationlanding">Meditation</Link>
+                            <Link className="navbar-link" to="/meditation">Meditation</Link>
                         </li>
                     </ul>
                 </div>

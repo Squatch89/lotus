@@ -5,63 +5,9 @@ import {Link} from "react-router-dom";
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
 import './Meditation.css';
-import ForestOne from './Audio/Forest-1.wav';
-import ForestTwo from './Audio/Forest-2.wav';
-import OceanWaves from './Audio/Ocean-1.wav';
-
-
 
 // creates Meditation component to render to the page
 class Meditation extends Component {
-    
-    constructor() {
-        super();
-        this.state = {
-            meditationChoices: ["Breath", "Audio"],
-            meditationType: '',
-            meditationSelected: false,
-            audio: ["Day Time Forest", "Night Time Forest", "Ocean Waves"],
-            audioFiles: [ForestOne, ForestTwo, OceanWaves],
-            chosenAudio: '',
-            breathStart: false
-        };
-    }
-    
-    chooseMedType = (id, name) => {
-        console.log("ID: ", id);
-        const medType = this.state.meditationChoices[id];
-        console.log("MedType: ", medType);
-        this.setState({meditationType: medType, meditationSelected: true});
-    };
-    
-  
-    
-    
-    resetBreath = () => {
-        console.log("whelp");
-        if (this.state.breathStart) {
-            this.setState({breathStart: false});
-        }
-    };
-    
-    clickHandler = (id, name) => {
-        console.log("ID: ", id);
-        console.log("Name: ", name);
-        
-        if (!this.state.meditationSelected) {
-            this.chooseMedType(id, name);
-        }
-        
-        else if (this.state.meditationSelected && this.state.meditationType === "Audio") {
-            this.chooseAudio(id, name);
-        }
-        
-        else {
-            console.log("hmmm that didn't work");
-        }
-    };
-    
-    
     
     render() {
         

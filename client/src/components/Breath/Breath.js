@@ -51,6 +51,6 @@ class Breath extends Component {
             </Wrapper>
         )
     }
-};
+}
 
 export default Breath;
