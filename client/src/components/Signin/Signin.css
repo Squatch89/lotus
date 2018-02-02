@@ -28,3 +28,9 @@
     background-color: #CDE3EB;
     color: #143A52;
 }
+
+@media screen and (max-height: 500px) {
+    .input {
+        margin: 1px;
+    }
+}

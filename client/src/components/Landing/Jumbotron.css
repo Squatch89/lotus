@@ -65,7 +65,7 @@ html {
 
 @media screen and (max-height: 500px) {
     #biglogo {
-        max-width: 30%;
+        max-width: 25%;
     }
 
     .jumbotron {
