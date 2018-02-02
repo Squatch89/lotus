@@ -53,6 +53,7 @@ class Signup extends Component {
                                     name="username"
                                     className="input"
                                     placeholder="username"
+                                    maxLength="10"
                                     onChange={this.getValues}/> <br/>
 
 
@@ -61,6 +62,7 @@ class Signup extends Component {
                                     name="password"
                                     className="input"
                                     placeholder="password"
+                                    maxLength="10"
                                     onChange={this.getValues}/> <br/>
 
                                 <button className="btn btn-primary btn-button" onClick={this.sendData}>Sign Up</button>

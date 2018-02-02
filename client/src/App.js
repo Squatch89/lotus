@@ -2,7 +2,8 @@ import React from 'react';
 import {
     BrowserRouter as Router,
     Route,
-    Redirect
+    Redirect,
+    Switch
 } from 'react-router-dom';
 import Landing from './components/Landing/Landing.js';
 import User from './components/User/User.js';
@@ -12,6 +13,7 @@ import Trends from './components/Trends/Trends.js';
 import Meditation from './components/Meditation/Meditation.js';
 import Breath from './components/Breath/Breath.js';
 import Soundscape from './components/Soundscape/Soundscape.js';
+import Nopage from './components/Nopage/Nopage.js';
 import './App.css';
 
 const isAuthenticated = JSON.parse(sessionStorage.getItem('isAuthenticated'));
@@ -40,6 +42,7 @@ const PublicRoute = ({component: Component, ...rest}) => {
 
 const App = (props) => (
     <Router>
+        <Switch>
     <div className="routerDiv">
         <PublicRoute path="/" component={Landing}/>
         <PublicRoute path="/signup" component={Signup}/>
@@ -49,7 +52,9 @@ const App = (props) => (
         <PrivateRoute exact path="/meditation" component={Meditation}/>
         <PrivateRoute path="/breath" component={Breath}/>
         <PrivateRoute path="/soundscape" component={Soundscape}/>
+        <Route component={Nopage}/>
     </div>
+        </Switch>
     </Router>
 );
 
