@@ -21,7 +21,6 @@ const generateToken = (_id, username) => {
 // signup post to create new user
 apiRouter.post("/signup", (req, res) => {
     const {username, password} = req.body;
-    username = username.toLowerCase();
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
     
