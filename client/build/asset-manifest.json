@@ -1,11 +1,11 @@
 {
   "main.css": "static/css/main.70027166.css",
   "main.css.map": "static/css/main.70027166.css.map",
-  "main.js": "static/js/main.a3cc8729.js",
-  "main.js.map": "static/js/main.a3cc8729.js.map",
-  "static\\media\\Forest-1.wav": "static/media/Forest-1.8f737d45.wav",
-  "static\\media\\Forest-2.wav": "static/media/Forest-2.7351a481.wav",
-  "static\\media\\Ocean-1.wav": "static/media/Ocean-1.abd33f9f.wav",
+  "main.js": "static/js/main.8bd48169.js",
+  "main.js.map": "static/js/main.8bd48169.js.map",
+  "static\\media\\Forest-1.mp3": "static/media/Forest-1.f9a929a3.mp3",
+  "static\\media\\Forest-2.mp3": "static/media/Forest-2.5ab57160.mp3",
+  "static\\media\\Ocean-1.mp3": "static/media/Ocean-1.505b1b3c.mp3",
   "static\\media\\background.PNG": "static/media/background.2f5cd6b5.PNG",
   "static\\media\\logo.png": "static/media/logo.7e9501a6.png"
 }

@@ -3,9 +3,9 @@ import Wrapper from '../Wrapper/Wrapper.js';
 import Container from '../Container/Container.js';
 import Header from '../Header/Header.js';
 import Footer from '../Footer/Footer.js';
-import ForestOne from './Audio/Forest-1.wav';
-import ForestTwo from './Audio/Forest-2.wav';
-import OceanWaves from './Audio/Ocean-1.wav';
+import ForestOne from './Audio/Forest-1.mp3';
+import ForestTwo from './Audio/Forest-2.mp3';
+import OceanWaves from './Audio/Ocean-1.mp3';
 
 
 class Soundscape extends Component {
