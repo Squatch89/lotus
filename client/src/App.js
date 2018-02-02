@@ -41,21 +41,22 @@ const PublicRoute = ({component: Component, ...rest}) => {
 };
 
 const App = (props) => (
-    <Router>
-        <Switch>
     <div className="routerDiv">
-        <PublicRoute path="/" component={Landing}/>
-        <PublicRoute path="/signup" component={Signup}/>
-        <PublicRoute path="/signin" component={Signin}/>
-        <PrivateRoute path="/trends" component={Trends}/>
-        <PrivateRoute path="/user" component={User}/>
+        <Router>
+        <Switch>
+        <PublicRoute exact path="/" component={Landing}/>
+        <PublicRoute exact path="/signup" component={Signup}/>
+        <PublicRoute exact path="/signin" component={Signin}/>
+        <PrivateRoute exact path="/trends" component={Trends}/>
+        <PrivateRoute exact path="/user" component={User}/>
         <PrivateRoute exact path="/meditation" component={Meditation}/>
-        <PrivateRoute path="/breath" component={Breath}/>
-        <PrivateRoute path="/soundscape" component={Soundscape}/>
+        <PrivateRoute exact path="/breath" component={Breath}/>
+        <PrivateRoute exact path="/soundscape" component={Soundscape}/>
         <Route component={Nopage}/>
-    </div>
         </Switch>
-    </Router>
+        </Router>
+    </div>
+
 );
 
 export default App;
