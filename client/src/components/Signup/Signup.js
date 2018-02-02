@@ -86,13 +86,13 @@ class Signup extends Component {
                                 placeholder="password"
                                 onChange={this.getValues}/> <br/>
                             
-                            <button className="btn btn-primary btn-button" onClick={this.sendData}>Sign Up</button>
+                            <button className="btn btn-primary btn-button" onClick={this.sendData}>Sign Up</button><Link to='/signin'>
+                            <button className="btn btn-primary btn-button">Go to Sign In</button>
+                        </Link>
                         </form>
                         
                         
-                        <Link to='/signin'>
-                            <button className="btn btn-primary btn-button">Go to Signin</button>
-                        </Link>
+
                     
                     </div>
                 </Container>

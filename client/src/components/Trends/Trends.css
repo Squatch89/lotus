@@ -99,7 +99,7 @@ svg {
 @media screen and (max-width: 360px) {
     .btn-button {
        padding: 5px;
-        font-size: .75em;
+       font-size: .75em;
     }
     .trendsText {
         margin-top: 1%;
@@ -113,3 +113,32 @@ svg {
     }
 }
 
+@media screen and (max-height: 700px) {
+    .chart {
+        height: 80%;
+    }
+    svg {
+        margin-top: -10%;
+    }
+    .trends {
+        font-size: .75em;
+    }
+    .trendotron {
+        height: 95%;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .chart {
+        height: 80%;
+    }
+    svg {
+        margin-top: -7%;
+    }
+    .trends {
+        font-size: .75em;
+    }
+    .trendotron {
+        height: 95%;
+    }
+}

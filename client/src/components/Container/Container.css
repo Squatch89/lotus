@@ -17,11 +17,8 @@
     }
 }
 
-/*@media screen and (max-width: 800px) {*/
-    /*.container {*/
-        /*grid-column-start: col4;*/
-        /*grid-column-end: col18;*/
-        /*grid-row-start: row3;*/
-        /*grid-row-end: row9;*/
-    /*}*/
-/*}*/
+@media screen and (max-height: 670px) {
+    .container {
+        grid-row-start: row3;
+    }
+}
