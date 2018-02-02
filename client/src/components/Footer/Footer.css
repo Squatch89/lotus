@@ -15,6 +15,15 @@
 .footeritem {
     grid-column-start: footercol1;
     grid-column-end: footercol3;
-    grid-row-start: footerrow2;
+    grid-row-start: footerrow3;
     grid-row-end: footerrow3;
+}
+
+@media screen and (max-height: 670px) {
+    .footer {
+        grid-row-start: row20;
+        grid-row-end: row21;
+        padding: 0;
+        grid-template-rows: [footerrow1] 1fr [footerrow2] 1fr [footerrow3];
+    }
 }
